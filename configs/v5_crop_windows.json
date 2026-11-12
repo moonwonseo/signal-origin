@@ -1,0 +1,15 @@
+{
+  "status": "DRAFT - Moonwon to approve or edit BEFORE any historical run",
+  "source_calendar": "Conab, Acompanhamento da Safra Brasileira de Cafe, 3rd survey 2026 (Sept 2026), Quadro 1, Minas Gerais: flowering Aug-Nov, pinhead fruit Nov-Dec, fruit expansion Dec-Jan, grain filling Jan-Apr, maturation Apr-Jun, harvest May-Oct.",
+  "chosen_without_outcomes": "Windows come from the published crop calendar and the midterm 2021 frost slide; no price outcomes were consulted.",
+  "features": {
+    "frost_nights": {"months": [6, 7, 8], "threshold_c": 3.0,
+                     "note": "Grid T2M_MIN read about 3 C on 20 and 30 July 2021 when farms froze (midterm slide). Worst region, not average."},
+    "flowering_rain_anomaly": {"months": [9, 10, 11],
+                               "note": "Existing 30-day prior-years rainfall z-score, production-weighted."},
+    "grain_fill_dry_spell": {"months": [1, 2, 3],
+                             "note": "Existing longest 30-day dry run, production-weighted."},
+    "grain_fill_heat_days": {"months": [1, 2, 3], "threshold_c": null,
+                             "note": "Optional. Left OFF (null) unless Moonwon sets a threshold before the run."}
+  }
+}
