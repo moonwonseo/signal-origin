@@ -1,0 +1,5 @@
+pulls/
+latency/
+__pycache__/
+*.csv
+!README.md
