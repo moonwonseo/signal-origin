@@ -1,0 +1,13 @@
+{
+  "C": 1.0,
+  "calibration_bins": 5,
+  "max_iter": 2000,
+  "min_test_rows": 30,
+  "min_train_per_class": 10,
+  "min_train_rows": 252,
+  "seed": 42,
+  "test_end": null,
+  "test_start": null,
+  "tolerance": 1e-08,
+  "train_start": null
+}

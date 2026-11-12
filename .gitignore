@@ -1,0 +1,38 @@
+
+/_local_import/
+
+# Private source inputs and generated research outputs
+/data/
+/results/
+/runs/
+/private/
+/model_archive/
+*.zip
+*.tar
+*.tar.gz
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+
+# Credentials and machine-specific files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+.aws/
+.codex/
+.agents/
+.DS_Store
+
+# Python environments, caches and local build products
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/

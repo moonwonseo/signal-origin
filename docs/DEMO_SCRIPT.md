@@ -1,0 +1,9 @@
+# Five-minute public demo walkthrough
+
+1. **0:00–0:45 — State the question and boundary.** Signal-Origin asks whether weather and freight context improve estimates of substantial coffee-price risk. All displayed inputs and scores are artificial software examples. The public viewer is not the original historical research viewer or a purchasing tool.
+2. **0:45–1:45 — Compare matched models.** Explain B0, B1, weather extensions and freight extensions. Lower Brier loss is better. Every model in the selected comparison uses the same eligible origins. Do not tell a market-performance story from the synthetic rankings.
+3. **1:45–2:45 — Separate horizon from availability.** Switch 63 to 21 sessions, then 180 to 45 days. The first changes the prediction task. The second changes assumed source timing. Neither creates verified first-release vintages. Switch annual subsets to show instability can be inspected explicitly.
+4. **2:45–3:45 — Inspect one artificial forecast.** Show its probabilities, t−4 weather date and freight month/assumed availability. Reveal the future path and threshold crossing. Explain that the full window is required even for an early positive, and that outcome hiding is only a presentation aid.
+5. **3:45–5:00 — Explain what remains unresolved.** The original V4 evidence was mixed across periods, horizons and timing assumptions. Overlapping labels are dependent, broad freight costs are not coffee shipments, and buyer savings were not measured. Show the public tests and data exclusions. Calibration changes, better coffee-specific context and point-in-time vintages remain future work.
+
+The page works offline. For a local browser test, install `requirements-browser.txt`, serve only the `demo/` directory, and run `scripts/check_browser.py`. Screenshots and test outputs belong in ignored `runs/`.

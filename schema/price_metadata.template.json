@@ -1,0 +1,17 @@
+{
+  "calendar_source": "REPLACE_WITH_CALENDAR_SOURCE_AND_CHECK",
+  "calendar_verified": false,
+  "data_kind": "historical",
+  "frequency": "exchange_session",
+  "instrument": "ICE_COFFEE_C",
+  "notes": "REPLACE_WITH_LIMITATIONS_AND_CLEANING_DECISIONS",
+  "point_in_time_status": "unverified_retrospective",
+  "price_field": "close",
+  "price_units": "us_cents_per_lb",
+  "retrieved_at_utc": null,
+  "rights_notes": "REPLACE_WITH_ACCESS_AND_REDISTRIBUTION_TERMS",
+  "roll_adjustment_status": "unverified",
+  "series_construction": "REPLACE_WITH_DOCUMENTED_ROLL_AND_RETURN_CONSTRUCTION",
+  "source_name": "REPLACE_WITH_ACTUAL_PROVIDER",
+  "source_url": "https://REPLACE_WITH_ACTUAL_SOURCE"
+}

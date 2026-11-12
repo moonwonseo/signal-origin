@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools==75.8.2", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signal-origin"
+version = "0.1.0"
+description = "Exploratory coffee-price risk research with a synthetic offline demo"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Moonwon Seo"}, {name = "Celine Yang"}]
+dependencies = [
+  "numpy==2.3.5",
+  "pandas==2.2.3",
+  "scipy==1.17.0",
+  "scikit-learn==1.8.0",
+  "jsonschema==4.23.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.2", "build==1.2.2.post1"]
+
+[project.scripts]
+signal-origin = "signal_origin.cli:main"
+signal-origin-v4 = "signal_origin.experiment:main"
+
+[tool.setuptools.packages.find]
+include = ["signal_origin*"]
+
+[tool.setuptools.package-data]
+signal_origin = ["schema/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"

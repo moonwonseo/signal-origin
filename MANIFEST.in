@@ -1,0 +1,10 @@
+include README.md pyproject.toml requirements-lock.txt requirements-browser.txt
+include run_baselines.py publication_manifest.json
+recursive-include signal_origin *.py *.json
+recursive-include schema *.csv *.json
+recursive-include config *.json
+recursive-include tests *.py
+recursive-include scripts *.py
+recursive-include docs *.md
+recursive-include demo *.html
+global-exclude __pycache__ *.py[cod] .DS_Store

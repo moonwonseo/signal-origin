@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Signal-Origin price metadata v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["data_kind", "instrument", "frequency", "price_units", "price_field", "source_name", "source_url", "retrieved_at_utc", "calendar_source", "calendar_verified", "roll_adjustment_status", "series_construction", "point_in_time_status", "notes"],
+  "properties": {
+    "data_kind": {"enum": ["historical", "synthetic"]},
+    "instrument": {"enum": ["ICE_COFFEE_C", "SYNTHETIC_TEST_SERIES"]},
+    "frequency": {"const": "exchange_session"},
+    "price_units": {"const": "us_cents_per_lb"},
+    "price_field": {"enum": ["close", "settlement"]},
+    "source_name": {"type": "string", "minLength": 1},
+    "source_url": {"type": "string", "minLength": 1},
+    "retrieved_at_utc": {"type": "string", "minLength": 20},
+    "calendar_source": {"type": "string", "minLength": 5},
+    "calendar_verified": {"type": "boolean"},
+    "roll_adjustment_status": {"enum": ["unverified", "documented_return_compatible"]},
+    "series_construction": {"type": "string", "minLength": 10},
+    "point_in_time_status": {"enum": ["unverified_retrospective", "point_in_time_documented", "synthetic_not_applicable"]},
+    "notes": {"type": "string", "minLength": 1},
+    "raw_source_sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+    "cleaning_log_file": {"type": "string"},
+    "rights_notes": {"type": "string"}
+  },
+  "allOf": [
+    {"if": {"properties": {"data_kind": {"const": "historical"}}}, "then": {"properties": {"instrument": {"const": "ICE_COFFEE_C"}, "source_url": {"pattern": "^https?://"}, "point_in_time_status": {"enum": ["unverified_retrospective", "point_in_time_documented"]}}}},
+    {"if": {"properties": {"data_kind": {"const": "synthetic"}}}, "then": {"properties": {"instrument": {"const": "SYNTHETIC_TEST_SERIES"}, "point_in_time_status": {"const": "synthetic_not_applicable"}}}}
+  ]
+}

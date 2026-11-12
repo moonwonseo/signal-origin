@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "prepared_date": "2026-11-12",
+  "status": "PROPOSED_AWAITING_OWNER_APPROVAL",
+  "repository": "https://github.com/moonwonseo/signal-origin",
+  "policy": "Project code, documentation, header-only templates and synthetic demo only; no historical observations or uncertain-rights files.",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 541,
+      "sha256": "1b2005c25106b219b65a9d9aedad2100eb0bb8813f877677d914a131e3ac0526",
+      "category": ".github"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 428,
+      "sha256": "cd1fd568c0f8744e5eecfb5c09ec856db3294b0dd41ef366c8e58b408f49b666",
+      "category": "root"
+    },
+    {
+      "path": "MANIFEST.in",
+      "bytes": 410,
+      "sha256": "538822cc12e0aa14f26be4beb24c00a29adc13998eb72f84e7fa1409997e03fd",
+      "category": "root"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5047,
+      "sha256": "73e7859b83bc9ad7f9ae82e32472dfbf6468510030fb94499598e96a0a3bc0d7",
+      "category": "root"
+    },
+    {
+      "path": "config/run_config.template.json",
+      "bytes": 238,
+      "sha256": "d5cae6acbf29d23359402d1746506e29cdb5220c3f869c25bdf171694f87ff25",
+      "category": "config"
+    },
+    {
+      "path": "demo/index.html",
+      "bytes": 4477844,
+      "sha256": "f84d3246da99c29ebe27b05424ee3d36914b8b82a167ed3e13ff3469b16e1e41",
+      "category": "demo"
+    },
+    {
+      "path": "demo/template.html",
+      "bytes": 23750,
+      "sha256": "a38a15befa7af7763a0987d9565e362d2b921177cf08e61013c890a5102b611e",
+      "category": "demo"
+    },
+    {
+      "path": "docs/DATA_AND_RIGHTS.md",
+      "bytes": 2636,
+      "sha256": "6483c36622e17f8feab428dd50ea9e80540d90a13691c15b13c2e10acd06893d",
+      "category": "docs"
+    },
+    {
+      "path": "docs/DATA_INPUTS.md",
+      "bytes": 3434,
+      "sha256": "72c6206cc3c0d7c895ae1e70f335c520687d828c85f71ad465aa3f73094dea09",
+      "category": "docs"
+    },
+    {
+      "path": "docs/DEMO_SCRIPT.md",
+      "bytes": 1854,
+      "sha256": "d79cbcf92e3f023d21274c6a9223faffeaa3657ece7f76ce8016550deec71851",
+      "category": "docs"
+    },
+    {
+      "path": "docs/METHODOLOGY.md",
+      "bytes": 4156,
+      "sha256": "bc223533ac65e5276d1efccb94695f78daac5245d9fcb4bc001dfe8681b4dbdf",
+      "category": "docs"
+    },
+    {
+      "path": "docs/PROVENANCE.md",
+      "bytes": 3985,
+      "sha256": "b3d001c89995e14755ca81a9f5e5562e9939743e7a2396dc3b48a4ab00c19bdb",
+      "category": "docs"
+    },
+    {
+      "path": "docs/PUBLICATION_REVIEW.md",
+      "bytes": 4127,
+      "sha256": "58a7f81b13a9a4e376f5513711e7e5680d877ff4572060427bd8acff3a40bf90",
+      "category": "docs"
+    },
+    {
+      "path": "docs/RESEARCH_STATUS.md",
+      "bytes": 2112,
+      "sha256": "11a8bbd4e13aaabcfca10a0045d236cf1dc6011caa894d0b94c5e29f5fd67b6a",
+      "category": "docs"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 3656,
+      "sha256": "bb4549f4d7ff118b8a386f28087d73a6a2747e3b63eb0d4c7e111f77fda59285",
+      "category": "docs"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 870,
+      "sha256": "40454b1bdd2f935f9470cbbe6b07e5e2cda987c681e1eee6c31b5adba44d757a",
+      "category": "root"
+    },
+    {
+      "path": "requirements-browser.txt",
+      "bytes": 91,
+      "sha256": "21dc75ace09bd34e51cb042b36233c01f3a09cc3e905bebe477ebcf91dccc0a1",
+      "category": "root"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "bytes": 604,
+      "sha256": "6d1644c9a20b3c396d633674a8c896e3da6f50533ffbe8a0b67133f9865e6d57",
+      "category": "root"
+    },
+    {
+      "path": "run_baselines.py",
+      "bytes": 323,
+      "sha256": "b24ad1bc7a005843860ca5c32e27a2faa5589fab8dfc247b0d4144c03e3c2c96",
+      "category": "root"
+    },
+    {
+      "path": "schema/coffee_c_daily.template.csv",
+      "bytes": 48,
+      "sha256": "b7f4d18d23283ef0cb05c327109141d44ba16217b87e16a8c760932b4ce07fad",
+      "category": "schema"
+    },
+    {
+      "path": "schema/exchange_sessions.template.csv",
+      "bytes": 13,
+      "sha256": "bd69c0c6b3b1aaaa83cf05db0085224c9ef39a7acd3fb80c97b13a2c152aa700",
+      "category": "schema"
+    },
+    {
+      "path": "schema/freight_monthly.template.csv",
+      "bytes": 30,
+      "sha256": "0ef651e8a655387340268bb8a6395f64de6384d0bb026ae13ac35e503ecad69c",
+      "category": "schema"
+    },
+    {
+      "path": "schema/price_metadata.template.json",
+      "bytes": 690,
+      "sha256": "1189773eb2a53abad323f0f7d71d99492489132d8761ab469c7371c11f23f806",
+      "category": "schema"
+    },
+    {
+      "path": "schema/weather_features.template.csv",
+      "bytes": 59,
+      "sha256": "2f00352584d1931aa1fbe1493194968ac58689f2f90bb541a3fcfc97848a1684",
+      "category": "schema"
+    },
+    {
+      "path": "scripts/build_demo.py",
+      "bytes": 2622,
+      "sha256": "17e8fb360282d23a95b4c7244f98f9c7d68705bec63db6072b24a02eae33b42f",
+      "category": "scripts"
+    },
+    {
+      "path": "scripts/check_browser.py",
+      "bytes": 4046,
+      "sha256": "b37048523ecba789b6875c8696050d7db38027cef2f3e02faaa59af4ae63639f",
+      "category": "scripts"
+    },
+    {
+      "path": "scripts/check_publication.py",
+      "bytes": 3923,
+      "sha256": "8bbdd2c7384838b958bade6c3cf79ebb9fdc82625c275148daf68894dbf22977",
+      "category": "scripts"
+    },
+    {
+      "path": "signal_origin/__init__.py",
+      "bytes": 92,
+      "sha256": "307aeaf49bb63ffd293f3b3bc7d9e6c2ebc3a85d11c540a82c34ae7b910a958f",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/__main__.py",
+      "bytes": 181,
+      "sha256": "e5bdfd787df95a8455652c2e43d1507a546e8c48c5bfbaa5052f34f542681216",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/cli.py",
+      "bytes": 3287,
+      "sha256": "ce2d33be8ae2cba95868e526d807105f43d176baaf8e3fd0c3ff2a0e8f294795",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/evaluation.py",
+      "bytes": 2592,
+      "sha256": "73c294b6e6bf57693406701ade7e1daac7549be69bcd2794732c59357e387224",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/experiment.py",
+      "bytes": 9571,
+      "sha256": "16ab6c78fdec8ff0cfe8dca77e9a74d79ec678204fbc9c5e269dd75d79e50209",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/features.py",
+      "bytes": 2960,
+      "sha256": "a8a426d582f79dcca0e654098f3702fbfdb6265fa4cd6dbf0d166bb80f1cc6aa",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/freight.py",
+      "bytes": 6719,
+      "sha256": "3215743d2ccec842978d66afc337641943a8a63fa1c67cdf5771fd9c32a4479a",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/io.py",
+      "bytes": 10880,
+      "sha256": "fd2be2ccba513222aa9a3490dd743e23a959857aece471559ecd818ac70a812b",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/models.py",
+      "bytes": 5479,
+      "sha256": "2f4c9f0597b6ba3b7a2aaefc90991295a89124d5af49f5c3b93b3917d0b2ff8d",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/parameters.py",
+      "bytes": 870,
+      "sha256": "0e8d193ecdfda05f185452a8974fd3e3a44141673b4b677dc857e3a3d4100380",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/runner.py",
+      "bytes": 9480,
+      "sha256": "57cf9184cf76d85e9aefa26aab427bd7b9fc03b0aaba6af5dc2a6da138b05ba5",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/schema/metadata.schema.json",
+      "bytes": 1973,
+      "sha256": "3ee51d77d94799090900a384018b75e7ef39e0b6b6c991847a20ec7372242305",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/spec.py",
+      "bytes": 3450,
+      "sha256": "ece5f8855b3a3b2099e10d9fe973bf06530ae9e889246acee0e0fb5b86b8964f",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/split.py",
+      "bytes": 4508,
+      "sha256": "7fc7032bdfc76af5b103e3522b84485ca99ff568a4af81f53f3250b819964c42",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/synthetic.py",
+      "bytes": 2470,
+      "sha256": "043948f6086e31b66a332dfc88cfe0543c8620a6e8b92a5acf964bf579ad1053",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/synthetic_v4.py",
+      "bytes": 2562,
+      "sha256": "e7432964dcedd65cd3ef264fa3a9c216bebcd9b4e87594fe137dcb7905e7f3f8",
+      "category": "signal_origin"
+    },
+    {
+      "path": "signal_origin/weather.py",
+      "bytes": 5172,
+      "sha256": "53a90b4ec035ad3b31c6025bc6458dead1667befdf2d0551d7959bec5bcbe203",
+      "category": "signal_origin"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 1602,
+      "sha256": "b21ca81aedd39539cbf9ff0d73839b1f0ccf025e9c26d5e293af1c2f7b373bec",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_demo.py",
+      "bytes": 2612,
+      "sha256": "85b68d55df61d59f7a5c71a6dfd892210418875116f5596d851f0749883c910e",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_end_to_end.py",
+      "bytes": 4873,
+      "sha256": "8f3b7c5407fe02c0663df662b4274235d089189d7805135358a689301d347765",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_features_labels.py",
+      "bytes": 3917,
+      "sha256": "b35cbc7826e037ce54dcb745529b2ea54d399a2f431a598d0fc5f8aa36075512",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_freight.py",
+      "bytes": 4992,
+      "sha256": "adc342c355a9921668a911a572fb16fa7f1f68d9d67e90342b72d9f7ab9a8ed0",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_input_contract.py",
+      "bytes": 6946,
+      "sha256": "c855c729665898a4117716ab039d50720395563fef791b6e0fc3d04ff130a6aa",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_publication.py",
+      "bytes": 2295,
+      "sha256": "1a748f4582a707f17bf27b9d3f94c690f26e0f79c19926b07e249dda1e01101f",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_split_models_metrics.py",
+      "bytes": 7460,
+      "sha256": "4598b7148b4eed76c61c100444c99a1b22f5e3a145ddf3e29faff1159219f740",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_v4_pipeline.py",
+      "bytes": 3966,
+      "sha256": "47d5f0d3f0daa7748309a6f1793e7487bb68e8dafe107b9c2133e51dde918146",
+      "category": "tests"
+    },
+    {
+      "path": "tests/test_weather.py",
+      "bytes": 2428,
+      "sha256": "3cac90ac9d9fdf52ab8e54a612a8eac591037a0eddaed1a8e07bab2c1d44dfc7",
+      "category": "tests"
+    }
+  ]
+}
