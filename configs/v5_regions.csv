@@ -1,0 +1,7 @@
+region_id,label,conab_region,latitude,longitude,anchor_town,arabica_2025_k_bags,arabica_2026_k_bags,weight_two_year_share
+sul_de_minas,Sul de Minas (existing pilot point),MG - Sul e Centro-Oeste,-21.55,-45.43,Varginha,12061.3,15932.6,0.3561
+matas_de_minas,Matas de Minas,"MG - Zona da Mata, Rio Doce e Central",-20.26,-42.03,Manhuacu,7468.3,9057.9,0.2102
+cerrado_mineiro,Cerrado Mineiro,"MG - Triangulo, Alto Paranaiba e Noroeste",-18.94,-46.99,Patrocinio,4771.6,8899.6,0.1739
+mogiana_sp,Sao Paulo / Alta Mogiana,SP (state total),-20.54,-47.4,Franca,4739.9,6192.0,0.1391
+montanhas_es,Espirito Santo arabica mountains,ES (arabica only),-20.33,-41.13,Venda Nova do Imigrante,3289.0,4376.0,0.0975
+planalto_ba,Bahia Planalto,BA - Planalto,-14.86,-40.84,Vitoria da Conquista,879.5,938.2,0.0231
