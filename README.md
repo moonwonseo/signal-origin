@@ -70,6 +70,5 @@ The original full longer-horizon replay favored combined inputs on average; rece
 
 [Publication review](docs/PUBLICATION_REVIEW.md) lists the proposed public contents and exclusions. [Provenance](docs/PROVENANCE.md) explains which calculations were preserved and which packaging changes were made. [Validation](docs/VALIDATION.md) separates newly executed checks from archived receipts. [The demo script](docs/DEMO_SCRIPT.md) provides a short walkthrough.
 
-Celine Yang and Moonwon Seo prepared the project with AI assistance: Celine/Claude for existing acquisition and preparation; Moonwon/ChatGPT for modeling and subsequent publication preparation. Human review remains part of release.
 
 No project-wide open-source license has been selected. Publication does not grant third-party data redistribution rights. See [data and rights policy](docs/DATA_AND_RIGHTS.md). No commit or push is part of this preparation draft.
