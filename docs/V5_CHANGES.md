@@ -14,7 +14,7 @@ non-roll days). It responds directly to the midterm feedback on locations, crop 
 thresholds/horizons. Freight is left out on purpose: V4's freight results stand as recorded.
 
 ## What did NOT change
-- `git diff --name-status main..v5-weather`: **20 files added (including this one), 0 modified, 0 deleted.**
+- `git diff --name-status main..v5-weather`: **21 files added (including this one), 0 modified, 0 deleted.**
 - V4 synthetic run (`python -m signal_origin.experiment synthetic`) gives **byte-identical**
   predictions, metrics, annual and calibration files on `main` and on this branch.
 - All 187 original tests pass; 16 new tests added (203 total).
@@ -30,12 +30,13 @@ thresholds/horizons. Freight is left out on purpose: V4's freight results stand 
 | 5 | V5 runner | `signal_origin/v5.py`, `configs/v5_spec.json` (DRAFT), tests | Grid, longer history, sign-off gate, dry run |
 
 | 6 | Docs | This file | Explains the change for review |
+| 7 | Data notes | `docs/V5_DATA_NOTES.md`; draft frost threshold 3.0 C -> 3.5 C | Six-region pull checks: recent-data revisions, 3.0 C missed the 2021 frost |
 
 Commit 5 depends on 2-4; to drop any of 2-4, revert 5 first.
 
 ## Decisions for Moonwon before sign-off
 1. **Crop windows and frost threshold** (`configs/v5_crop_windows.json`). Months come from Conab's
-   2026 crop calendar; 3 C comes from our 2021 frost slide. No outcomes were consulted.
+   2026 crop calendar. Frost threshold now 3.5 C (3.0 C missed 2021; see V5_DATA_NOTES.md). No price outcomes were consulted.
 2. **Heat-day feature**: off unless you set a threshold.
 3. **Region weights**: Conab 2025+2026 shares. Using recent shares to weight earlier years is a
    mild look-ahead; an older survey's shares would be cleaner.
