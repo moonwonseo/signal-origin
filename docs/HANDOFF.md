@@ -1,0 +1,185 @@
+# Signal-Origin — handoff to the next agent (14 Nov 2026, 17:30 London)
+
+You are picking up a student research project four days before its final presentation. Read `AGENTS.md`
+for rules. This document is the full record: objective, what was tried, what worked, what did not,
+where everything lives, and what remains.
+
+---
+
+## 1. Objective
+
+**Course:** Duke AIPI 590.03 Alternative Data, Fall 2026. Team: Celine Yang (data, prep, product, framing)
+and Moonwon Seo (modelling, evaluation, V1–V4 codebase owner). Repo: `github.com/moonwonseo/signal-origin`.
+
+**Research question:** can alternative data, chiefly weather in Arabica-growing regions, help coffee buyers
+(roaster procurement leads deciding whether to lock in green-coffee prices now or wait) judge the risk of a
+large Coffee C price rise?
+
+**Prediction target:** for each trading day t, does any KC=F daily close in t+1..t+h reach ≥ (1+k) × close(t)?
+k ∈ {5, 10, 15}%, h ∈ {21, 63, 126} sessions. Primary cell: k = 10%, h = 63 (~3 months).
+(The midterm used "exactly 63 sessions later"; V4 switched to "at any close within".)
+
+**Deliverable:** final presentation **Wednesday 18 Nov 2026**, **10 minutes, hard stop**, **PDF uploaded to
+Canvas by 1:30 PM**, 25% of grade. Required sections: Project Recap; Final Product Solution (what was built,
+how it evolved since the midterm); Data & Model (sources, prep decisions, baseline, model selection);
+Evaluation & Performance (metrics, improvements since midterm); Risks & Responsible AI (bias, failure cases,
+gaps, how addressed); Conclusion & Reflection. Demo strongly encouraged. The team builds the deck together;
+do not draft slides unless asked. Midterm score 90/100; the team wants an A.
+
+**Midterm TA feedback being answered:** (1) multiple weather locations across Brazil's coffee regions;
+(2) crop-season-specific features; (3) validate actual weather-data availability instead of a fixed lag;
+(4) test other thresholds and horizons; plus "translate the research into an actionable price-risk tool".
+
+---
+
+## 2. Timeline of work
+
+| Date | Who | What |
+|---|---|---|
+| ≤ 3 Nov | Moonwon | V1–V4: B0/B1/A1/A2 → freight (F1, FW1, FW2); annual refits 2022–26; offline viewer; publication package on `main` |
+| 10 Nov | Moonwon | Handoff bundle to Celine (`Signal_Origin_Celine_Final_Handoff_Bundle_2026-11-10.zip`) |
+| 12 Nov | Celine + Claude | V4 check; 2000–2018 price check; thin-trading labels; six-region POWER pull; revisions check; V5 code; pushed `v5-weather` PR; V5 local preview; volatility gauge; weather→volatility study; CFTC study; dashboard |
+| 14 Nov | Celine + Claude | Moonwon briefing; 37-node / 8-country pull; multi-origin PCA study; these docs |
+
+---
+
+## 3. What was tried and what came out
+
+Shared evaluation design unless noted: annual expanding refits, test years 2012–2026, training from
+2008-01-02, purged so training outcomes end before the test year; every model scored on the same dates
+(matched sample); Brier score; block-bootstrap 95% ranges on paired Brier differences (block = h,
+2,000 draws, seed 590); "always 50%" reference = 0.25. Primary cell: 3,122 test dates, ~50 independent
+63-session windows. Spike base rate: 32% of test dates in 2012–18, 68% in 2019+.
+
+### 3.1 V4 check (no refit; Moonwon's saved predictions, 2022–Jul 2026, 1,135 dates, ~18 windows)
+FW1 (price + freight + weather) Brier 0.2514, no better than always-50%. FW1 vs B0 gain 0.031, range
+−0.063 to +0.108. FW1 wins 2022 and 2024, loses 2023, 2025, 2026. **Did not work.**
+
+### 3.2 Data work (Celine)
+- **Price history:** 2008+ usable (2000–07 has 20 blank sessions, mostly holiday weeks). Five rolls per year.
+  Usable origins at 63 sessions: 2008–18 2,099; 2019–26 1,846. Calendar unverified for both.
+- **Thin-trading labels:** Yahoo's KC=F keeps quoting expiring contracts on near-zero-volume days. Of V4's
+  669 positive labels, 280 first cross on a day with volume < 1,000, 24 on a suspected roll day, and 100 (15%)
+  vanish if closes with volume < 1,000 are ignored. V5 added a sensitivity run; conclusions unchanged.
+- **Six Brazil regions:** Sul de Minas (Varginha), Matas de Minas (Manhuaçu), Cerrado Mineiro (Patrocínio),
+  Alta Mogiana (Franca), Espírito Santo mountains (Venda Nova), Bahia Planalto (Vitória da Conquista).
+  93.6% of Brazilian Arabica. Weights: Conab 3rd survey 2026, Table 2, 2025+2026 average (36/21/17/14/10/2%).
+- **Availability (TA point 3):** new POWER values arrive within ~2 days (inside the t−4 lag). The newest
+  ~month is later revised: versus the October pull, 2–30 Sep 2026 changed almost entirely (Tmin up to 1.9 °C,
+  rain up to 11 mm/day; September rain 96.9 → 118.2 mm). Backtests use revised data.
+  A daily latency logger (`data_tools/power_latency_logger.py`) was started on Celine's Mac; its log was not reviewed.
+- **Frost threshold:** 3.0 °C missed 2021 (coldest grid night 3.05 °C). 3.5 °C catches 1981, 1994, 2000, 2021.
+  Since 2008 only 2021 qualifies, so frost is a one-event feature.
+
+### 3.3 V5 (on `v5-weather`; local preview with the DRAFT spec, 12 Nov) — **did not work**
+Models B0, B1 (trailing returns, volatility, day-of-year), A1 (+ single-point rain/temperature z-scores),
+A3 (+ six-region crop-stage features: worst-region frost nights Jun–Aug, weighted flowering-rain anomaly
+Sep–Nov, weighted grain-fill dry spell Jan–Mar; zero outside season). Logistic regression, L2, C = 1.
+Primary Brier: **B0 0.260, B1 0.289, A1 0.284, A3 0.293**. A3 vs B0 −0.033 (−0.062 to −0.011).
+No model beats B0 in any of the 9 cells. Within-year AUC ≈ 0.5, unstable (2013 nearly inverted).
+Learned models fail because relationships flip between the calm (2012–18) and volatile (2019+) regimes.
+Spec and crop-window files are unchanged since the preview (sha256 prefixes `c3d3705f96033f45`, `2bb17a71ebfa5ae5`),
+so the official run, once signed off, reproduces these numbers.
+
+### 3.4 Volatility gauge — **worked (exploratory)**
+P(touch +k within h) = 2·(1 − Φ(ln(1+k) / (σ·√h))), σ = std of the last 63 daily log returns. Nothing fitted.
+Primary: Brier **0.240** vs B0 0.260, gain +0.020 (+0.001 to +0.039); 2019+ +0.035 (+0.012 to +0.058);
+2012–18 about tied. Wins at 10%/126 and 15%/126 too; level at 21 sessions.
+Calibration (said → happened): 39% → 26%, 51% → 58%, 60% → 57%, 69% → 58%: separates calm from risky days,
+not finely calibrated, over-forecasts in calm years.
+**Caveats:** found after V5 failed (not pre-registered); price data only (not alternative data); direction-free:
+the formula is symmetric, so 12 Nov reads 59% for +10% and 55% for −10%. It is a valid estimate for the
+"touch +10%" target because turbulence makes touching either side likely; it does not say rises are more likely.
+
+### 3.5 Weather → volatility (`research/exploratory/weather_volatility/`) — **did not work** (pre-registered)
+Target: log realised volatility over the next h sessions. V0 persistence; V1 HAR-style ridge (log RV 5/21/63 +
+day-of-year); W1 = V1 + single-point weather; W3 = V1 + six-region crop-stage features.
+W3 vs V1 at h = 63: −0.0021 (−0.0050 to +0.0001); at h = 21 reliably worse; no calendar quarter better.
+W3-based gauge Brier 0.2461 vs V0 0.2399. Weather coefficients have agronomic signs but are tiny.
+
+### 3.6 CFTC positioning (`research/exploratory/cftc_positioning/`) — **did not work** (pre-registered)
+Disaggregated futures-only, Coffee C, 1,065 weekly reports (Jun 2006 – 3 Nov 2026), usable from report date + 6 days.
+Features: managed-money net share of open interest, its 4-week change. G = logistic recalibration of the gauge;
+GP = G + positioning. Primary Brier: V0 0.240, G 0.258, **GP 0.275**; GP vs G −0.017 (−0.027 to −0.008);
+worse in all 9 cells. Coefficient flips sign across years. Even G (one-parameter recalibration) loses to V0.
+ICE certified stocks not tested: no free CSV (MacroMicro download is paywalled).
+
+### 3.7 Multi-origin weather PCA (`research/exploratory/multi_origin_pca/`) — **not significant** (pre-registered)
+37 nodes in 8 countries (`configs/v6_arabica_world_nodes.csv`: Brazil 6, Colombia 6, Ethiopia 6, Mexico 5,
+Peru 5, Guatemala 4, Honduras 3, Nicaragua 2; no two nodes in one POWER cell). Per node 30-day rain and
+temperature z-scores (existing method); PCA refit inside each fold on pre-test weather; 3 PCs each → 6 features.
+Primary Brier: G 0.258, **GPC 0.249**, V0 0.240, B0 0.260. GPC vs G +0.009 (−0.008 to +0.030); not worse in
+either period; does not beat V0. Positive vs G in 6 of 9 cells, none significant. Volatility: no improvement.
+PCA structure: temperature PC1 explains 43% (all origins co-move); rain PC1 only 15%, Brazil opposite to
+Colombia/Central America. Fourth weather design tried: treat as noise, not a signal.
+Note: Brazil is roughly half of world Arabica (one third of all coffee incl. Robusta); verify with USDA before citing.
+
+### 3.8 Classmate's corn project (public midterm transcript, 14 Oct)
+Weather → corn yield worked (R² 0.73, 26 held-out seasons); trading signals failed once harvest seasons were held
+out (−7%, Sharpe ≈ −1); he attributes it to markets reacting before public weather data. He was pivoting to
+coffee/cocoa. Corroborates our finding. Do not cite his unpublished work in the deck.
+
+### Overall reading
+For direction, public data (alternative or not) is priced in before it can be used; learned models fail across
+the regime shift. For risk, current turbulence is the strongest signal. "No reliable edge found" is accurate;
+"weather does not matter" overclaims, because big moves come from few shocks (~50 windows, rare events).
+Untested and plausible: forward-looking data (weather-forecast archives, satellite crop health, Conab estimate
+revisions, ICE certified stocks, options-implied volatility).
+
+---
+
+## 4. Product: buyer dashboard (`research/prototype/`)
+Single offline HTML in the deck palette (#F5F6EB background, #1E7796 headings, #2A342D ink, #7D5341 accent).
+1. **Risk gauge** (volatility gauge): 59% for +10% within 3 months as of 12 Nov 2026 (35% at 1 month, 71% at
+   6 months; −10% at 3 months 55%); higher than 65% of days since 2012. Read 63% on 9 Oct; the only change is
+   the price window.
+2. **Coffee-belt early warning** (the alternative-data layer, labelled as context): live Open-Meteo 16-day
+   forecast for the six Brazil regions; frost < 3.5 °C (Jun–Aug), dryness vs 1991–2020 POWER normals during
+   flowering (Sep–Nov) and grain fill (Jan–Mar). Offline fallback snapshot from 12 Nov (all regions near/above usual rain).
+3. **2021 frost replay** (Open-Meteo Previous Runs, `gfs_seamless`): forecasts within 3 °C of the observed frost
+   4–7 days ahead, but crossed the 3.5 °C line for 1 of 2 frost nights (20 Jul: 12.4 °C at 7 days → 3.9 °C at
+   1 day vs 3.0 °C observed). GFS runs ~0.4 °C colder than the grid. Six winters: 1 false alarm. Anecdote.
+4. **Track record:** Brier bars and calibration table.
+Files: `template.html` (data blob removed), `fetch_demo_data.py`. The builder script (`build_dashboard.py`) was
+not preserved; to rebuild, embed a JSON object `D` with keys `gauge, track, normals, replay, snapshot, frost_c,
+regions` (shapes are read by the template's script). The built HTML embeds Yahoo prices: keep it local.
+
+---
+
+## 5. Repository and branch state
+- `v5-weather` pushed, PR open into `main`, **not merged**. Commits 1–7: V5 (21 files added, none modified).
+  Commit 8: exploratory studies, `AGENTS.md`, `CLAUDE.md`, this handoff, README status section.
+- PR checks fail on `scripts/check_publication.py` (allowlist), not tests. `main` fails it too (README changed
+  after review). Moonwon decides allowlist changes and whether `configs/*.csv` with Conab figures are allowed.
+- 203 package tests pass; 9 exploratory tests pass. V4 synthetic outputs byte-identical to `main`.
+
+---
+
+## 6. Data inputs (all outside the repo)
+| Input | Where | Notes |
+|---|---|---|
+| KC=F vendor closes 2000–Oct 2026 + session calendar + metadata | Moonwon's handoff bundle → nested V4 archive → `upstream_v1/.../data/full_candidate/` | Unverified calendar; requires `--acknowledge-unverified-inputs` |
+| Single-point weather features | same archive, `upstream_v1/data/audited_weather_features.csv` | V1–V4 A1 features |
+| Six-region POWER daily | Celine's `power_daily_all_regions.csv` | 1981 – 11 Nov 2026 |
+| 37-node POWER daily | Celine's Mac: `~/Downloads/arabica_weather/power_daily_arabica_world.csv` | 1981 – 13 Nov 2026 |
+| CFTC disaggregated, Coffee C | `72hh-3qpy.csv` from publicreporting.cftc.gov | |
+| Recent KC=F, forecast archive, snapshot | `kc_recent.csv`, `forecast_archive_gfs.csv`, `forecast_snapshot.json` | From `fetch_demo_data.py` |
+Network: the sandbox usually cannot reach POWER, Yahoo, CFTC, Open-Meteo or USDA; have Celine run fetch scripts.
+
+---
+
+## 7. Open decisions (Moonwon) and remaining work
+**Decisions:** accept the story (public data priced in; gauge works; weather as early-warning layer);
+sign off and officially run V5 as drafted, or cite the preview as exploratory; present the gauge as exploratory;
+PR merge and allowlist; whether to mention the multi-origin PCA.
+
+**Remaining (team builds the deck together; only help when asked):**
+1. Official V5 run after sign-off (minutes): `python -m signal_origin.v5 run --spec configs/v5_spec.json ...` (see `docs/V5_CHANGES.md`).
+2. Charts for results if requested (comparison bars with 0.25 line; by-period; study summary).
+3. Demo prep: 2-minute path through the dashboard, backup recording, screenshots for the PDF.
+4. Q&A prep: "Does anything beat 50%?" (gauge 0.240, yes); "Isn't the gauge conventional data?" (yes; the
+   alternative-data contribution is the tested negative plus the early-warning layer); "Why not private/forecast data?" (next steps).
+5. Results freeze Mon 16 Nov evening; rehearse Tue; submit PDF Wed before 1:30 PM.
+**Do not** start new signal searches unless Celine asks; each further variant mainly raises false-positive risk.
+
+*Prepared by Claude (Anthropic) with Celine Yang. All numbers come from the files listed above.*

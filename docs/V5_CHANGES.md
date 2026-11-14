@@ -14,7 +14,7 @@ non-roll days). It responds directly to the midterm feedback on locations, crop 
 thresholds/horizons. Freight is left out on purpose: V4's freight results stand as recorded.
 
 ## What did NOT change
-- `git diff --name-status main..v5-weather`: **21 files added (including this one), 0 modified, 0 deleted.**
+- `git diff --name-status main..v5-weather`: **Commits 1–7: 21 files added, 0 modified, 0 deleted.** Commit 8 adds the exploratory studies and agent docs and inserts one status section into `README.md` (the only edit to an existing file).
 - V4 synthetic run (`python -m signal_origin.experiment synthetic`) gives **byte-identical**
   predictions, metrics, annual and calibration files on `main` and on this branch.
 - All 187 original tests pass; 16 new tests added (203 total).

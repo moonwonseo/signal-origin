@@ -1,0 +1,12 @@
+{
+ "plan_sha256": "fc3e7447275033a8206eb5b461426640e2528dc00a8f378d9aa58dd53c16731b",
+ "sources": {
+  "GP": {
+   "file_sha256": "baa1c314a62fd400f0d19b8ffde75fdd54c0fa4eb017ddaf4805181893bd59b9",
+   "rows": 1065,
+   "first": "2006-06-13",
+   "last": "2026-11-03",
+   "skipped_folds": []
+  }
+ }
+}

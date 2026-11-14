@@ -4,6 +4,23 @@ Exploratory research into whether weather and freight context improve estimates 
 
 This repository contains the project's modeling methods, tests, documentation, and an offline **synthetic demo**. It excludes third-party observations and historical row-level outputs. The public demo's scores are generated software examples, not the original research results.
 
+## Status on branch `v5-weather` (14 November 2026)
+
+This branch adds V5 and three exploratory studies on top of V4 without modifying V4's code or outputs.
+Summary for the primary target (+10% at any close within 63 sessions, test years 2012–2026, 3,122 dates; Brier, lower is better):
+
+| Approach | Brier | Verdict |
+| --- | --- | --- |
+| B0 historical frequency | 0.260 | Baseline |
+| V5: price-only, single-point weather, six-region crop-stage weather (B1/A1/A3) | 0.284–0.293 | Worse than B0 in all 9 threshold/horizon cells |
+| Weather → volatility forecasts | — | No improvement (pre-registered) |
+| CFTC fund positioning added to the gauge | 0.275 | Reliably worse (pre-registered) |
+| 37-node, 8-country weather PCA added to the gauge | 0.249 | Not significant (pre-registered) |
+| **Volatility gauge (unfitted)** | **0.240** | Beats B0 (gain 0.020, range 0.001 to 0.039); exploratory |
+
+Historical results come from local runs on excluded inputs; V5's official run awaits both teammates' sign-off.
+See [AGENTS.md](AGENTS.md), [the handoff](docs/HANDOFF.md) and [V5 changes](docs/V5_CHANGES.md).
+
 ## Try the demo
 
 Open [demo/index.html](demo/index.html) in a browser. No installation, account or network connection is needed. Compare seven models, switch between 21- and 63-session horizons and two freight availability assumptions, inspect an artificial forecast, then reveal its artificial outcome.
