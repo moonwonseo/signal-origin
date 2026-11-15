@@ -1,0 +1,18 @@
+{
+ "plan_sha256": "5eca71220d7bc1ba90439f53b5f4a8aaceebeb6ab844c0eba195410c1182ea4f",
+ "zero_variance_windows_floored": {
+  "63": {
+   "rv5": 0,
+   "rv21": 0,
+   "rv63": 0,
+   "future": 0
+  },
+  "21": {
+   "rv5": 0,
+   "rv21": 0,
+   "rv63": 0,
+   "future": 0
+  }
+ },
+ "note": "Local exploratory study; not part of the repo or the V5 sign-off."
+}

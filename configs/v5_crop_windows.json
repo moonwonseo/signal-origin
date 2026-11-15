@@ -1,0 +1,41 @@
+{
+  "status": "DRAFT - Moonwon to approve or edit BEFORE any historical run",
+  "source_calendar": "Conab, Acompanhamento da Safra Brasileira de Cafe, 3rd survey 2026 (Sept 2026), Quadro 1, Minas Gerais: flowering Aug-Nov, pinhead fruit Nov-Dec, fruit expansion Dec-Jan, grain filling Jan-Apr, maturation Apr-Jun, harvest May-Oct.",
+  "chosen_without_outcomes": "Windows come from the published crop calendar and the midterm 2021 frost slide; no price outcomes were consulted.",
+  "features": {
+    "frost_nights": {
+      "months": [
+        6,
+        7,
+        8
+      ],
+      "threshold_c": 3.5,
+      "note": "Worst region, not average. 3.5 C is the lowest round threshold at which all four documented damaging Brazilian frost winters (1981, 1994, 2000, 2021) register at grid level in the six-region pull; 3.0 C missed 2021 (coldest grid night 3.05 C, Sul de Minas, 20 Jul 2021). Calibrated on weather and the agronomic record only, no price outcomes; note that 2021 is also remembered for its price spike. See docs/V5_DATA_NOTES.md."
+    },
+    "flowering_rain_anomaly": {
+      "months": [
+        9,
+        10,
+        11
+      ],
+      "note": "Existing 30-day prior-years rainfall z-score, production-weighted."
+    },
+    "grain_fill_dry_spell": {
+      "months": [
+        1,
+        2,
+        3
+      ],
+      "note": "Existing longest 30-day dry run, production-weighted."
+    },
+    "grain_fill_heat_days": {
+      "months": [
+        1,
+        2,
+        3
+      ],
+      "threshold_c": null,
+      "note": "Optional. Left OFF (null) unless Moonwon sets a threshold before the run."
+    }
+  }
+}

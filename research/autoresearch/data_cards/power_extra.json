@@ -1,0 +1,7 @@
+{"name": "power_extra", "kind": "weather_daily", "file": "autoresearch/data/power_extra.csv", "alt": true,
+ "publisher": "NASA POWER (MERRA-2 / CERES), daily point API, community AG",
+ "url": "https://power.larc.nasa.gov/api/temporal/daily/point", "first_date": "1981-01-01",
+ "variables": "RH2M (humidity), GWETROOT (root-zone soil wetness), ALLSKY_SFC_SW_DWN (solar radiation)",
+ "publication_delay": "Near-real-time values appear after about 2-4 days. Used at t-4 calendar days (plan minimum).",
+ "revision_policy": "Near-real-time values are replaced later by the final reanalysis. The file holds final values. Same limit as the temperature and rain data of the project.",
+ "new_source_number": 1}

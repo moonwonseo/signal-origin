@@ -1,0 +1,6 @@
+{"name": "usda_psd", "kind": "annual", "file": "autoresearch/data/raw_psd/psd_coffee.csv", "alt": true,
+ "publisher": "USDA FAS, Production, Supply and Distribution (PSD), coffee table", "first_date": "1960 (consistent world totals from marketing year 2002)",
+ "url": "https://apps.fas.usda.gov/psdonline/downloads/psd_coffee_csv.zip",
+ "publication_delay": "Plan rule: a marketing-year value is used only 12 months after the year ended. Marketing year Y (Y/Y+1) ends by 30 Sep Y+1 and is used from 1 Oct Y+2.",
+ "revision_policy": "The file holds the last revised values, not the first estimates. The 12-month delay reduces this problem. World stocks-to-use has a break between 2001 and 2002 (0.92 -> 0.41, coverage change); only 2002 and later are used.",
+ "new_source_number": 5}

@@ -1,0 +1,6 @@
+{"name": "power_vietnam", "kind": "weather_daily", "file": "autoresearch/data/power_vietnam.csv", "alt": true,
+ "publisher": "NASA POWER daily point API (same source as the project's weather data), three robusta regions of Vietnam: Dak Lak, Lam Dong, Gia Lai",
+ "url": "https://power.larc.nasa.gov/api/temporal/daily/point", "first_date": "1981-01-01",
+ "publication_delay": "Used at t-4 calendar days (plan minimum for weather).",
+ "revision_policy": "Near-real-time values are replaced later by final values. The file holds final values.",
+ "new_source_number": 20}

@@ -1,0 +1,5 @@
+{"name": "nino34", "kind": "monthly", "file": "data/enso/nino34_monthly.csv", "column": "nino34_anom",
+ "delay_months": 1, "start": "1990-01-01", "alt": true, "publisher": "NOAA CPC (sstoi.indices)",
+ "url": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices", "first_date": "1982-01",
+ "publication_delay": "Month M is published in the first days of M+1. Used from the 15th of M+1.",
+ "revision_policy": "OISST values can change slightly after publication. On hand before the loop."}

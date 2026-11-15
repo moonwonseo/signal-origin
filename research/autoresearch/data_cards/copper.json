@@ -1,0 +1,11 @@
+{
+ "name": "copper",
+ "kind": "market_daily",
+ "file": "autoresearch/data/copper.csv",
+ "alt": false,
+ "publisher": "Yahoo Finance chart API, symbol HG=F (COMEX copper futures, front-month chain)",
+ "url": "https://query1.finance.yahoo.com/v8/finance/chart/HG=F",
+ "publication_delay": "Daily close. Used through t-1 only (strictly before the Coffee C session).",
+ "revision_policy": "Vendor series, not verified. Futures chains are unadjusted and contain contract gaps.",
+ "new_source_number": 12
+}

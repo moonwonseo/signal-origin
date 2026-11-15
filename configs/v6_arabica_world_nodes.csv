@@ -1,0 +1,38 @@
+region_id,country,label,anchor_town,latitude,longitude
+cerrado_mineiro,Brazil,Cerrado Mineiro,Patrocinio,-18.94,-46.99
+matas_de_minas,Brazil,Matas de Minas,Manhuacu,-20.26,-42.03
+mogiana_sp,Brazil,Alta Mogiana (Sao Paulo),Franca,-20.54,-47.4
+montanhas_es,Brazil,Espirito Santo mountains,Venda Nova do Imigrante,-20.33,-41.13
+planalto_ba,Brazil,Bahia Planalto,Vitoria da Conquista,-14.86,-40.84
+sul_de_minas,Brazil,Sul de Minas,Varginha,-21.55,-45.43
+co_antioquia,Colombia,Antioquia,Andes,5.66,-75.88
+co_cauca,Colombia,Cauca,Popayan,2.44,-76.61
+co_eje_cafetero,Colombia,Caldas / Eje Cafetero,Manizales,5.07,-75.52
+co_huila,Colombia,Huila,Pitalito,1.85,-76.05
+co_narino,Colombia,Narino,La Union,1.6,-77.13
+co_tolima,Colombia,Tolima,Planadas,3.2,-75.64
+et_bench_maji,Ethiopia,Bench Sheko,Mizan Teferi,6.99,35.58
+et_guji,Ethiopia,Guji,Bule Hora,5.63,38.25
+et_harar,Ethiopia,Harar,Harar,9.31,42.12
+et_jimma,Ethiopia,Jimma / Limu,Jimma,7.67,36.83
+et_sidama,Ethiopia,Sidama,Yirgalem,6.75,38.41
+et_yirgacheffe,Ethiopia,Gedeo / Yirgacheffe,Yirgacheffe,6.16,38.2
+gt_antigua,Guatemala,Antigua,Antigua Guatemala,14.56,-90.73
+gt_coban,Guatemala,Coban,Coban,15.47,-90.37
+gt_huehuetenango,Guatemala,Huehuetenango,Huehuetenango,15.32,-91.47
+gt_nuevo_oriente,Guatemala,Nuevo Oriente,Chiquimula,14.8,-89.55
+hn_copan,Honduras,Copan,Santa Rosa de Copan,14.77,-88.78
+hn_marcala,Honduras,La Paz / Marcala,Marcala,14.15,-88.03
+hn_olancho,Honduras,Olancho,Juticalpa,14.66,-86.22
+mx_chiapas_sierra,Mexico,Chiapas Sierra Madre,Jaltenango,15.87,-92.72
+mx_chiapas_soconusco,Mexico,Chiapas Soconusco,Tapachula,14.9,-92.26
+mx_oaxaca,Mexico,Oaxaca,Pluma Hidalgo,15.92,-96.42
+mx_puebla,Mexico,Puebla,Cuetzalan,20.02,-97.52
+mx_veracruz,Mexico,Veracruz,Coatepec,19.45,-96.96
+ni_jinotega,Nicaragua,Jinotega / Matagalpa,Jinotega,13.09,-86.0
+ni_nueva_segovia,Nicaragua,Nueva Segovia,Dipilto,13.72,-86.5
+pe_cajamarca,Peru,Cajamarca (Jaen),Jaen,-5.71,-78.81
+pe_cusco,Peru,Cusco (La Convencion),Quillabamba,-12.86,-72.69
+pe_junin,Peru,Junin (Chanchamayo),La Merced,-11.05,-75.33
+pe_puno,Peru,Puno (Sandia),Sandia,-14.32,-69.47
+pe_san_martin,Peru,San Martin,Moyobamba,-6.03,-76.97

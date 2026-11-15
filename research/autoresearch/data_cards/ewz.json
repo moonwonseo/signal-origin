@@ -1,0 +1,11 @@
+{
+ "name": "ewz",
+ "kind": "market_daily",
+ "file": "autoresearch/data/ewz.csv",
+ "alt": false,
+ "publisher": "Yahoo Finance chart API, symbol EWZ (iShares MSCI Brazil ETF (price, no dividends))",
+ "url": "https://query1.finance.yahoo.com/v8/finance/chart/EWZ",
+ "publication_delay": "Daily close. Used through t-1 only (strictly before the Coffee C session).",
+ "revision_policy": "Vendor series, not verified. Futures chains are unadjusted and contain contract gaps.",
+ "new_source_number": 13
+}

@@ -1,0 +1,101 @@
+iteration,id,block,change,ratio,need,score,half1,half2,years_pos,hit,saved_pct,constraints_ok,step,worked,best_after
+1,c01,Price,Trend rule: sign of the 12-month return,0.093,0.444,-0.351,0.5,-0.34,7,0.549,0.36,False,rejected,No,0.062
+2,c02,Price,'Carry' from the marked roll days (wrong day; VOID),0.434,0.456,-0.022,0.76,0.09,6,0.508,1.71,False,VOID,No (void),0.062
+3,c03,Price,Carry rule from the correct contract-gap day,-0.34,0.467,-0.807,-0.43,-0.24,5,0.465,-1.34,False,rejected,No,0.062
+4,c04,Price,Value rule: price against its 5-year mean,-0.129,0.477,-0.606,-0.13,-0.13,7,0.433,-0.51,False,rejected,No,0.062
+5,c05,Weather,"Brazil rain deficit, 90 days (raw level)",-0.11,0.486,-0.596,-0.24,0.02,7,0.511,-0.43,False,rejected,No,0.062
+6,c06,Weather,"Brazil heat-and-dry stress, 90 days, drift removed",0.51,0.494,0.016,0.26,0.77,9,0.58,2.01,True,ACCEPTED (new best),Yes,0.51
+7,c07,Positioning,Speculator positions at extremes (CFTC),-0.149,0.502,-0.651,-0.48,0.24,7,0.355,-0.43,False,rejected,No,0.51
+8,c08,Climate index,ENSO state rule (La Nina / El Nino),-0.001,0.51,-0.51,0.2,-0.2,7,0.539,-0.0,False,rejected,No,0.51
+9,c09,Weather,Stress of the other origins,0.133,0.516,-0.384,-0.26,0.54,9,0.488,0.52,False,rejected,No,0.51
+10,c10,Weather,c06 + frost days,0.484,0.523,-0.039,0.11,0.88,9,0.588,1.9,True,rejected,Partly,0.51
+11,c11,Weather (new source 1),Brazil root-zone soil moisture,0.408,0.529,-0.121,-0.02,0.86,9,0.514,1.6,False,rejected,No,0.51
+12,c12,Weather,Stress and soil moisture must agree,0.512,0.535,-0.023,0.14,0.91,8,0.561,1.81,True,rejected,Partly,0.51
+13,c13,Other market (new source 2),Dollar index trend,0.197,0.54,-0.343,0.0,0.4,7,0.52,0.78,False,rejected,No,0.51
+14,c14,Other market,USD/BRL trend,0.073,0.545,-0.472,0.25,-0.11,7,0.525,0.29,False,rejected,No,0.51
+15,c15,Model,Logistic regression on 4 signals,0.308,0.55,-0.243,0.31,0.31,9,0.523,1.21,True,rejected,No,0.51
+16,c16,Model,Random forest on 16 features,-0.019,0.555,-0.574,-0.32,0.3,8,0.484,-0.08,False,rejected,No,0.51
+17,c17,Model,LightGBM on 15 features,-0.329,0.56,-0.888,-0.48,-0.16,4,0.445,-1.29,False,rejected,No,0.51
+18,c18,Weather,Stress of the crop season to date (Oct-Apr),0.553,0.564,-0.011,0.21,0.92,11,0.6,2.17,True,rejected,Partly,0.51
+19,c19,Weather,Season rain deficit only,0.339,0.568,-0.229,-0.23,0.94,9,0.544,1.33,False,rejected,No,0.51
+20,c20,Weather,Season heat only,0.569,0.572,-0.003,0.17,0.99,11,0.597,2.24,True,rejected,Partly,0.51
+21,c21,Weather,Season maximum temperature,0.596,0.576,0.021,0.24,0.97,11,0.602,2.34,True,rejected,Partly,0.51
+22,c22,Weather,Season heat and 90-day stress must agree,0.612,0.58,0.032,0.28,0.96,11,0.617,2.18,True,ACCEPTED (new best),Yes,0.612
+23,c23,Robustness,c22 with weather 10 days old,0.495,0.583,-0.088,0.24,0.77,11,0.615,1.75,True,rejected,Partly,0.612
+24,c24,Robustness,c22 with a 10-year normal,0.473,0.587,-0.114,0.28,0.69,9,0.562,1.63,True,rejected,Partly,0.612
+25,c25,Other market (new source 3),Arabica-robusta price spread,-0.363,0.59,-0.953,-0.08,-0.67,5,0.367,-1.43,False,rejected,No,0.612
+26,c26,Weather,c22 + memory of the previous season,0.55,0.593,-0.043,0.32,0.79,8,0.611,1.85,True,rejected,Partly,0.612
+27,c27,Other market (new source 4),Sugar trend,0.336,0.596,-0.26,0.34,0.33,10,0.631,1.32,True,rejected,No,0.612
+28,c28,Combination,Vote: weather rule (c22) + sugar trend,0.576,0.599,-0.023,0.47,0.67,12,0.683,1.8,True,rejected,Partly,0.612
+29,c29,Supply (new source 5),USDA world stocks-to-use,0.155,0.602,-0.447,0.23,0.09,5,0.478,0.57,False,rejected,No,0.612
+30,c30,Combination,"Majority of season heat, 90-day stress, sugar",0.579,0.605,-0.026,0.3,0.88,11,0.618,2.27,True,rejected,Partly,0.612
+31,c31,Other markets,Breadth of 5 farm commodities (new data: Yahoo),0.269,0.608,-0.338,0.09,0.46,10,0.552,1.06,True,rejected,No,0.612
+32,c32,Other markets,Brazil equity fund trend,0.202,0.61,-0.408,0.35,0.05,9,0.569,0.79,True,rejected,No,0.612
+33,c33,Calendar,Frost-risk calendar rule (no data),-0.163,0.613,-0.776,-0.21,-0.11,7,0.429,-0.53,False,rejected,No,0.612
+34,c34,Falsification,Season heat of the other origins (Oct-Apr),-0.065,0.616,-0.68,0.1,-0.24,6,0.517,-0.25,False,rejected,No,0.612
+35,c35,Supply flow (new source),Brazil export volume (incomplete file; VOID),-0.303,0.618,-0.921,-0.34,-0.26,6,0.425,-1.12,False,VOID,No (void),0.612
+36,c36,Supply flow,"Brazil export volume, 2nd try (file still incomplete; VOID)",-0.055,0.621,-0.675,-0.07,-0.03,6,0.458,-0.21,False,VOID,No (void),0.612
+37,c37,Supply flow,"Brazil export volume, complete file",-0.18,0.623,-0.803,-0.07,-0.29,5,0.44,-0.71,False,rejected,No,0.612
+38,c38,Positioning,Hedging pressure of producers (CFTC),0.171,0.625,-0.455,0.69,-0.44,6,0.641,0.47,False,rejected,No,0.612
+39,c39,Other markets,"World growth vote: S&P 500, copper, crude",0.251,0.628,-0.377,-0.02,0.54,9,0.506,0.99,False,rejected,No,0.612
+40,c40,Weather,It. 22 with price confirmation,0.408,0.63,-0.221,0.58,0.26,9,0.662,1.16,True,rejected,No,0.612
+41,c41,Weather,"Season heat, large anomalies only",0.551,0.632,-0.081,0.29,0.81,11,0.604,1.91,True,rejected,Partly,0.612
+42,c42,Other markets,Five-market slow trend composite,0.34,0.634,-0.294,0.41,0.27,10,0.591,1.34,True,rejected,No,0.612
+43,c43,Combination,Weather rule (22) + five-market composite,0.525,0.636,-0.111,0.5,0.55,11,0.651,1.63,True,rejected,Partly,0.612
+44,c44,Weather,Flowering heat only (Sep-Nov),0.082,0.638,-0.556,-0.58,0.78,9,0.539,0.32,False,rejected,No,0.612
+45,c45,Weather,Grain-fill heat only (Jan-Mar),0.596,0.64,-0.044,0.51,0.68,10,0.622,2.34,True,rejected,Partly,0.612
+46,c46,Weather,Grain-fill heat and 90-day stress agree,0.624,0.642,-0.018,0.44,0.82,10,0.636,2.17,True,rejected,Partly,0.612
+47,c47,Combination,"Majority: fill heat, stress, market composite",0.509,0.644,-0.135,0.32,0.71,11,0.622,2.0,True,rejected,Partly,0.612
+48,c48,Robustness,It. 45 with weather 10 days old,0.687,0.646,0.042,0.52,0.86,10,0.617,2.7,True,rejected,Partly,0.612
+49,c49,Robustness,It. 45 with a 10-year normal,0.601,0.648,-0.047,0.57,0.63,9,0.583,2.36,True,rejected,Partly,0.612
+50,c50,Robustness,It. 45 with window Dec-Feb,0.533,0.649,-0.117,0.32,0.76,9,0.595,2.09,True,rejected,Partly,0.612
+51,c51,Robustness,It. 45 with window Feb-Apr,0.225,0.651,-0.426,0.07,0.39,9,0.536,0.88,True,rejected,No,0.612
+52,c52,Robustness,It. 45 with mean temperature,0.68,0.653,0.027,0.62,0.74,11,0.643,2.67,True,rejected,Partly,0.612
+53,c53,Robustness,It. 45 with Minas Gerais only,0.553,0.655,-0.102,0.5,0.61,9,0.602,2.17,True,rejected,Partly,0.612
+54,c54,Other markets,US 10-year yield change,0.079,0.656,-0.578,-0.22,0.4,9,0.519,0.31,False,rejected,No,0.612
+55,c55,Weather (new data),Vietnam dry-season heat (robusta supply),0.239,0.658,-0.419,0.27,0.21,9,0.553,0.94,True,rejected,No,0.612
+56,c56,Price,Coffee price in reais against its 1-year mean,-0.233,0.659,-0.893,-0.42,-0.04,5,0.394,-0.9,False,rejected,No,0.612
+57,c57,Model,Logistic regression on the 4 best features,0.023,0.661,-0.638,0.04,0.0,9,0.51,0.09,False,rejected,No,0.612
+58,c58,Model,Logistic regression with time-decay weights,0.064,0.663,-0.598,-0.13,0.27,8,0.484,0.25,False,rejected,No,0.612
+59,c59,Other markets,Market fear: VIX against its 1-year mean,0.27,0.664,-0.394,-0.3,0.87,9,0.515,1.06,False,rejected,No,0.612
+60,c60,Combination,Market composite and Vietnam heat agree,0.422,0.666,-0.244,0.53,0.32,9,0.655,1.14,True,rejected,No,0.612
+61,c61,Other markets,Colombian peso trend,0.056,0.667,-0.611,-0.03,0.15,9,0.523,0.22,False,rejected,No,0.612
+62,c62,Other markets,Robusta price trend (World Bank),0.317,0.669,-0.352,0.6,0.02,9,0.543,1.25,True,rejected,No,0.612
+63,c63,Exposure,It. 22 with a volatility switch,0.62,0.67,-0.05,0.29,0.93,11,0.648,1.69,True,rejected,Partly,0.612
+64,c64,Climate index (new source),Indian Ocean Dipole (NOAA),-0.162,0.671,-0.834,-0.01,-0.27,6,0.456,-0.25,False,rejected,No,0.612
+65,c65,Robustness,"Market composite, 63-session horizon",0.1,0.673,-0.573,0.15,0.04,10,0.56,0.39,True,rejected,No,0.612
+66,c66,Robustness,"Market composite, 252-session horizon",0.341,0.674,-0.333,0.39,0.29,10,0.593,1.34,True,rejected,No,0.612
+67,c67,Weather,Colombia flowering heat (Jan-Mar),0.507,0.676,-0.168,0.66,0.35,10,0.622,1.99,True,rejected,Partly,0.612
+68,c68,Falsification,Central America heat in Jan-Mar (no crop meaning),0.326,0.677,-0.351,0.48,0.17,7,0.552,1.28,False,rejected,No,0.612
+69,c69,Weather,Brazil-specific heat (Brazil minus other regions),0.393,0.678,-0.285,0.27,0.52,10,0.587,1.55,True,rejected,No,0.612
+70,c70,Weather,Common Jan-Mar warmth outside Brazil,0.416,0.679,-0.263,0.67,0.15,8,0.582,1.64,True,rejected,No,0.612
+71,c71,Climate index,"ENSO state of January, held for a year",0.385,0.681,-0.296,0.41,0.36,9,0.622,1.52,True,rejected,No,0.612
+72,c72,Combination,"Majority: ENSO, Brazil-specific heat, market composite",0.572,0.682,-0.11,0.59,0.55,11,0.64,2.25,True,rejected,Partly,0.612
+73,c73,Combination,"Majority: ENSO, Brazil fill heat, market composite",0.646,0.683,-0.037,0.63,0.66,11,0.687,2.54,True,rejected,Partly,0.612
+74,c74,Climate index,ENSO rule for real events only,0.417,0.684,-0.268,0.61,0.25,9,0.608,1.44,True,rejected,No,0.612
+75,c75,Combination,ENSO state and market composite agree,0.481,0.686,-0.205,0.54,0.41,10,0.691,1.43,True,rejected,Partly,0.612
+76,c76,Model,Depth-2 decision tree on 3 inputs,0.025,0.687,-0.662,0.21,-0.17,7,0.543,0.1,False,rejected,No,0.612
+77,c77,Robustness (new source),Brazil fill heat from ERA5,0.447,0.688,-0.241,0.66,0.22,11,0.613,1.76,True,rejected,No,0.612
+78,c78,Weather,"Brazil water balance, rain minus ET0 (ERA5)",0.091,0.689,-0.598,0.17,0.0,7,0.491,0.36,False,rejected,No,0.612
+79,c79,Robustness,It. 73 with weather 10 days old,0.666,0.69,-0.024,0.67,0.67,11,0.689,2.62,True,rejected,Partly,0.612
+80,c80,Robustness,It. 73 with ERA5 heat,0.545,0.692,-0.146,0.7,0.38,10,0.647,2.14,True,rejected,Partly,0.612
+81,c81,Robustness,It. 73 with 252-session trends,0.618,0.693,-0.074,0.35,0.9,11,0.681,2.43,True,rejected,Partly,0.612
+82,c82,Robustness,It. 73 with Dec-Feb ENSO mean,0.669,0.694,-0.025,0.72,0.62,12,0.687,2.63,True,rejected,Partly,0.612
+83,c83,Combination,ENSO state and Brazil fill heat agree,0.705,0.695,0.01,0.72,0.69,10,0.712,2.09,True,rejected,Partly,0.612
+84,c84,Robustness,It. 83 with Dec-Feb ENSO mean,0.743,0.696,0.047,0.82,0.67,10,0.72,2.18,True,rejected,Partly,0.612
+85,c85,Robustness,It. 83 with ERA5 heat,0.495,0.697,-0.202,0.69,0.32,9,0.653,1.64,True,rejected,Partly,0.612
+86,c86,Robustness,It. 83 with weather 10 days old,0.787,0.698,0.089,0.79,0.78,11,0.709,2.34,True,ACCEPTED (new best),Yes,0.787
+87,c87,Robustness,It. 86 with maximum temperature,0.677,0.699,-0.022,0.59,0.77,10,0.672,2.11,True,rejected,Partly,0.787
+88,c88,Robustness,It. 86 with a 10-year normal,0.631,0.7,-0.069,0.75,0.5,10,0.664,1.78,True,rejected,Partly,0.787
+89,c89,Robustness,It. 86 with Minas Gerais only,0.78,0.701,0.079,0.77,0.79,11,0.704,2.33,True,rejected,Partly,0.787
+90,c90,Robustness,It. 86 with window Dec-Feb,0.626,0.702,-0.076,0.53,0.72,9,0.68,1.85,True,rejected,Partly,0.787
+91,c91,Combination,ENSO state and Brazil-specific heat agree,0.612,0.703,-0.092,0.52,0.73,9,0.711,1.59,True,rejected,Partly,0.787
+92,c92,Falsification,ENSO state with Central America heat,0.394,0.704,-0.311,0.55,0.25,10,0.622,1.36,True,rejected,No,0.787
+93,c93,Robustness,It. 86 with both weather products (POWER + ERA5),0.599,0.705,-0.106,0.77,0.46,10,0.656,1.9,True,rejected,Partly,0.787
+94,c94,Combination,"ENSO, Brazil heat and market composite all agree",0.722,0.706,0.016,0.81,0.65,11,0.718,1.7,True,rejected,Partly,0.787
+95,c95,Combination,ENSO state with Vietnam heat,0.397,0.707,-0.31,0.46,0.33,9,0.631,1.23,True,rejected,No,0.787
+96,c96,Combination,ENSO state with Colombia heat,0.471,0.708,-0.237,0.6,0.35,10,0.643,1.72,True,rejected,Partly,0.787
+97,c97,Robustness,It. 86 with ENSO events only,0.735,0.709,0.026,0.79,0.68,11,0.696,2.12,True,rejected,Partly,0.787
+98,c98,Robustness,It. 86 with ENSO updated in mid year,0.567,0.71,-0.143,0.52,0.61,10,0.642,1.56,True,rejected,Partly,0.787
+99,c99,Combination,Careful design: Dec-Feb ENSO + two-product Brazil heat,0.633,0.711,-0.077,0.86,0.45,10,0.663,1.99,True,rejected,Partly,0.787
+100,c100,Combination,Careful design + market composite (majority),0.561,0.712,-0.15,0.74,0.37,11,0.65,2.21,True,rejected,Partly,0.787

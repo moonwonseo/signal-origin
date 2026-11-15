@@ -36,3 +36,9 @@ htmlcov/
 build/
 dist/
 *.egg-info/
+
+# Row-level study outputs (derived from third-party data): never commit
+LOCAL_ONLY_*
+/research/autoresearch/out/
+/research/autoresearch/data/
+/research/autoresearch/state.json

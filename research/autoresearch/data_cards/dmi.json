@@ -1,0 +1,5 @@
+{"name": "dmi", "kind": "monthly", "file": "autoresearch/data/dmi_monthly.csv", "column": "dmi", "delay_months": 2,
+ "start": "1990-01-01", "alt": true, "publisher": "NOAA Physical Sciences Laboratory, Dipole Mode Index (Indian Ocean Dipole) from HadISST1.1",
+ "url": "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data", "first_date": "1870-01",
+ "publication_delay": "HadISST values arrive with a delay of 1 to 2 months. Used from the 15th of M+2.",
+ "revision_policy": "The index is recomputed when HadISST is updated; small revisions are possible.", "new_source_number": 21}

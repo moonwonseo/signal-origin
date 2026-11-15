@@ -1,0 +1,36 @@
+{
+ "plan_sha256": "2cf5ad6a1ad2d9eb50270ec8021b415557fcea896452f0eeb806dc6895823f03",
+ "price_last_date": "2026-10-09",
+ "n_sessions": 6736,
+ "roll_days_zeroed": 134,
+ "feature_counts": {
+  "P": 8,
+  "PC": 14,
+  "RAW": 82,
+  "CTY": 42
+ },
+ "xgb_params": {
+  "n_estimators": 300,
+  "max_depth": 3,
+  "learning_rate": 0.03,
+  "subsample": 0.8,
+  "colsample_bytree": 0.5,
+  "min_child_weight": 20,
+  "reg_lambda": 1.0,
+  "tree_method": "hist",
+  "n_jobs": 1
+ },
+ "seeds": [
+  590,
+  591,
+  592,
+  593,
+  594
+ ],
+ "versions": {
+  "xgboost": "3.4.1",
+  "sklearn": "1.8.0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5"
+ }
+}

@@ -1,0 +1,33 @@
+{
+  "version": "V5",
+  "status": "DRAFT",
+  "signed_off_by": [],
+  "signed_off_date": null,
+  "how_to_sign_off": "Both teammates review this file and configs/v5_crop_windows.json, edit if needed, then set status to SIGNED_OFF, list both names and the date, and commit BEFORE any historical (non-dry-run) V5 run. The runner refuses real-data fitting otherwise.",
+  "question": "Does better weather data - six Arabica regions, crop-stage timing - add to price-only forecasts of a large Coffee C rise, tested over a longer history?",
+  "responds_to_midterm_feedback": ["multiple weather locations", "crop-season-specific features", "other thresholds and horizons"],
+  "models": ["B0", "B1", "A1", "A3"],
+  "model_notes": {
+    "B0": "historical frequency of the event in matured training labels (unchanged)",
+    "B1": "trailing 21/63-session returns, 63-session volatility, day-of-year seasonality (unchanged)",
+    "A1": "B1 + single-point rainfall and temperature anomalies (unchanged from V1-V4)",
+    "A3": "B1 + multi-region crop-stage weather: worst-region frost nights, weighted flowering rain anomaly, weighted grain-fill dry spell"
+  },
+  "price_history_start": "2008-01-02",
+  "price_history_reason": "2000-2007 has many blank sessions (holiday weeks) and yields few complete windows; 2008+ adds about 33 independent 63-session windows and the 2014 drought. Calendar for 2008-2018 is as unverified as for 2019+.",
+  "fold_years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  "thresholds_pct": [5, 10, 15],
+  "horizons_sessions": [21, 63, 126],
+  "primary_target": {"threshold_pct": 10, "horizon_sessions": 63},
+  "label_sensitivity": {"threshold_pct": 10, "horizon_sessions": 63,
+                        "rule": "a crossing counts only on sessions with reported volume >= 1,000 that are not suspected roll days (data_tools/make_liquidity_mask.py); window completeness unchanged"},
+  "weather_lag_calendar_days": 4,
+  "crop_windows": "configs/v5_crop_windows.json",
+  "regions": "configs/v5_regions.csv",
+  "scopes": {"all_test_years": [2012, 2026], "2012_to_2018": [2012, 2018], "2019_onward": [2019, 2026], "2024_onward": [2024, 2026]},
+  "uncertainty": {"method": "moving-block bootstrap of paired Brier differences, block = horizon", "n_boot": 2000, "seed": 590,
+                  "references": ["B0", "FLAT50 (always 50%)"]},
+  "model_settings": "unchanged from V4: training-only scaling, L2 logistic regression, C=1, lbfgs, max_iter 2000, tol 1e-8, seed 42, no class weighting",
+  "not_in_v5": ["freight models (V4 results stand as recorded)", "any tuning on test scores", "recalibration", "new price sources"],
+  "reporting_rule": "Report every threshold/horizon cell and every scope, favourable or not."
+}

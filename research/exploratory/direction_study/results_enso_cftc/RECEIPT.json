@@ -1,0 +1,15 @@
+{
+ "plan_sha256": "7730354631e4d6a34c7e317977799d6c9274727e9dfc5192529b55b9abe0714d",
+ "placebo_shift_years": 0,
+ "first_complete_row": "2006-07-17",
+ "feature_counts": {
+  "A": 13,
+  "E": 15,
+  "C": 15
+ },
+ "horizons": [
+  5,
+  21,
+  63
+ ]
+}
