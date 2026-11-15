@@ -1,0 +1,37 @@
+{
+ "plan_sha256": "c0c54933b20997b37777b707f44837d9884d6da5a1efa71d2891e678e7fbc50d",
+ "placebo_shift_years": 0,
+ "price_last_date": "2026-10-09",
+ "first_complete_row": "2004-03-04",
+ "roll_days_zeroed": 268,
+ "feature_counts": {
+  "A": 13,
+  "B1": 23,
+  "B2": 65
+ },
+ "xgb_params": {
+  "n_estimators": 300,
+  "max_depth": 3,
+  "learning_rate": 0.03,
+  "subsample": 0.8,
+  "colsample_bytree": 0.5,
+  "min_child_weight": 20,
+  "reg_lambda": 1.0,
+  "tree_method": "hist",
+  "n_jobs": 1
+ },
+ "seeds": [
+  590,
+  591,
+  592,
+  593,
+  594
+ ],
+ "cost_per_unit_turnover": 0.0005,
+ "versions": {
+  "xgboost": "3.4.1",
+  "sklearn": "1.8.0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5"
+ }
+}

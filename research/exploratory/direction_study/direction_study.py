@@ -11,6 +11,7 @@ fit on training rows only; training outcomes end before the test year.
 import argparse
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -53,6 +54,8 @@ def market_features(frame, fx_csv):
     px = frame.model_price.astype(float).where(frame.price_usable).ffill()
     r = np.log(px).diff()
     roll = frame.suspected_roll_flag.astype(str).str.lower().eq("true")
+    if os.environ.get("ROLL_FIX") == "1":          # repair of 15 Nov 2026: the contract gap is in the NEXT session
+        roll = roll | roll.shift(1, fill_value=False)
     r = r.where(~roll, 0.0)
     L = r.fillna(0.0).cumsum()
     L[px.isna()] = np.nan

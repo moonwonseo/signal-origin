@@ -52,3 +52,23 @@ No model has a P&L range above zero. No weather model beats its market-only mode
   training start is mid-2006, not March 2004 (1,443 training rows for the 2012 fold).
 - The daily forward log was NOT started. No model passed the bar, and the log needs daily price and weather
   downloads plus a scheduled job on the Mac mini, which need separate approval.
+
+## Erratum (15 Nov 2026): roll adjustment repaired, study run again
+The price file marks the last day of the old contract as the roll day; the gap between contracts is in the next
+session. The study set only the marked day to zero, so the gaps stayed in the returns and in the labels. The
+repair sets both days to zero (`ROLL_FIX=1`; 268 sessions). Real run and 17 placebo runs were repeated on the Mac
+mini. Aggregate results: `research/exploratory/direction_study/results_rollfix/`. Details: `research/autoresearch/Autoresearch_PLAN_ADDENDUM_1.md`.
+
+| Quantity (2012-2026) | First run | With the repair |
+|---|---|---|
+| Up-rate, h = 5 / h = 21 | 48.1% / 48.0% | 47.5% / 45.9% |
+| Always-long P&L per year | +1.4% | -1.0% |
+| PRIMARY: XGB + Brazil weather, h = 5, hit rate | 49.8% | 50.5% |
+| PRIMARY: gain against XGB market-only | -0.1 pp; 9 of 17 placebos at or above | -0.3 pp; 7 of 17 |
+| Linear + all-origin weather, h = 5: hit rate | 52.2% | 50.5% |
+| Linear + all-origin weather, h = 5: P&L per year | +11.0%; 0 of 17 placebos at or above | +2.3%; 3 of 17 |
+| XGB + all-origin weather, h = 21: hit rate | 52.4% | 47.9% |
+| XGB + all-origin weather, h = 21: P&L per year | +2.2%; 0 of 17 | -11.2%; 11 of 17 |
+
+Verdict: the primary result does not change (all four bars fail). The two secondary leads of the first run
+(all-origin weather in the linear model at h = 5 and in XGBoost at h = 21) do not survive the repair.

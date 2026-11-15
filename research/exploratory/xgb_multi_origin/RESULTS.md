@@ -79,3 +79,21 @@ Reading of the placebo test:
   2008-2026 contains only about 5 ENSO cycles, so explanation (2) rests on very few independent events.
 - The 17 rotations are not independent draws. "0 of 17" is at best p of about 0.06 for each row.
 - Status: a lead that justifies one focused follow-up (detrended weather + placebo). It is not a result.
+
+## Erratum (15 Nov 2026): roll adjustment repaired, study run again
+Same defect and repair as in `Direction_RESULTS.md` (erratum). It affects the return features and part (b);
+the "+10% touch" target of part (a) uses the unadjusted price by design and was not changed (a contract gap can
+count toward a touch; this is a limit of that target). Real run and 17 placebo runs were repeated.
+Aggregate results: `research/exploratory/xgb_multi_origin/results_rollfix/`.
+
+| Quantity (2012-2026) | First run | With the repair |
+|---|---|---|
+| (a) Brier +10%/63: V0 / XGB price only / XGB + 6 PCs (primary) | 0.239 / 0.348 / 0.327 | 0.239 / 0.347 / 0.330 |
+| (a) Brier gain of the primary model against price only; placebos at or above | +0.021; 0 of 17 | +0.017; 0 of 17 |
+| (b) h = 63 P&L per year: always long | +5.5% | +4.7% |
+| (b) h = 63 P&L per year: XGB price only | -9.0% | -14.6% |
+| (b) h = 63 P&L per year: XGB + 6 PCs (primary) | -0.6% | -4.2% (range -15.8 to +5.8) |
+| (b) h = 63 P&L per year: XGB + 74 node z-scores / + country features | +2.8% / +6.4% | +6.8% / +6.7% |
+
+Verdict: no change. No alpha and no gain for the risk gauge. The exploratory placebo result also holds: real
+weather is better than rotated weather in 0 of 17 comparisons for each of the three weather sets.

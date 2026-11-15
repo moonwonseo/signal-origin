@@ -40,3 +40,26 @@ Limits that prevent the word "alpha":
 h = 21: XGB + CFTC 49.5%, gain -3.4 pp (-5.7 to -1.3), reliably worse; 16 of 17 placebos are better than the real
 data. Linear + CFTC -0.2 pp. h = 63: -9.6 pp. Reading: the relation between positioning and the next return
 changes sign between the training years and the test years. This is the second failure of this source.
+
+## Erratum (15 Nov 2026): roll adjustment repaired, study run again
+Same defect and repair as in `Direction_RESULTS.md` (erratum). Real run and 17 placebo runs were repeated.
+Aggregate results: `research/exploratory/direction_study/results_enso_cftc_rollfix/`.
+
+| Quantity (2012-2026) | First run | With the repair |
+|---|---|---|
+| PRIMARY: XGB + ENSO, h = 21, hit rate | 55.9% | 50.4% |
+| PRIMARY: gain against XGB market-only | +2.9 pp (low -0.6) | +2.3 pp (low -1.8) |
+| PRIMARY: placebos at or above the real gain | 0 of 17 | 1 of 17 |
+| PRIMARY: hit rate 2012-18 / 2019+ | 54.5% / 57.1% | 52.1% / 48.9% |
+| PRIMARY: P&L per year, Sharpe | +4.1%, 0.15 | -9.2%, -0.35 |
+| Linear + ENSO, h = 21: hit rate; gain | 56.2%; +3.0 pp (low -0.2) | 53.5%; +2.4 pp (low -1.1); 2 of 17 placebos at or above |
+| Linear + ENSO, h = 21: P&L per year, Sharpe | +9.1%, 0.34 | +2.6%, 0.09 |
+| Linear + ENSO, h = 5: gain | +2.2 pp (low +0.5); 0 of 17 | +1.1 pp (low -0.6); 4 of 17 |
+| XGB + CFTC, h = 21: gain | -3.4 pp | -2.3 pp; 17 of 17 placebos at or above |
+
+Verdict: the first run said "ENSO meets 3 of 4 bars". With the repair it meets none: the hit-rate range is not
+above 50%, one placebo is above the real gain, and the hit rate in 2019+ is below 50%. The only result with a
+range above zero (linear + ENSO at h = 5) is gone. The ENSO lead at 21 sessions is much weaker than reported.
+CFTC positioning fails as before.
+Note: the autoresearch loop later found a different ENSO form with a stable sign (the January state held for a
+year, El Nino = buy early; `Autoresearch_RESULTS.md`, iteration 71). That result uses the repaired returns.

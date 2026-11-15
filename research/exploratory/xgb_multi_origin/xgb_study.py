@@ -11,6 +11,7 @@ training outcomes end before the test year.
 import argparse
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -171,6 +172,8 @@ def main(a):
                         pdir / "vendor_price_metadata.json").frame
     base, r = pos_study.base_frame(frame)
     roll = frame.suspected_roll_flag.astype(str).str.lower().eq("true")
+    if os.environ.get("ROLL_FIX") == "1":          # repair of 15 Nov 2026: the contract gap is in the NEXT session
+        roll = roll | roll.shift(1, fill_value=False)
     r_adj = r.where(~roll, 0.0)                               # roll jumps are not tradable returns
     for n in (21, 63, 126):
         base[f"ret{n}"] = r_adj.rolling(n, min_periods=n).sum()
