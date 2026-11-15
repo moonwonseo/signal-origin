@@ -29,6 +29,7 @@ test, and failed the test period. Read `Autoresearch_RESULTS.md` first.
 | `selftest.py` | Checks of the harness (leak test, perfect-foresight score, random strategies) |
 | `make_report.py` | Builds the iteration table and the hill-climb graph from the trial log |
 | `make_figures.py` | Builds the slide figures in `results/figures/` (label, walk-forward, idea families, yearly result of the final rule, ranges, roll gap). Aggregates and made-up illustrations only |
+| `export_dashboard.py` | Writes the inputs of the buyer dashboard (`research/prototype/`) from the saved final run of c86. No score is calculated. Its output has third-party rows and stays local |
 | `run.sh`, `it.sh`, `newc.sh` | Shell helpers: run on the compute machine, run one counted iteration, make a candidate file |
 
 ## Commands (from the `autoresearch` folder on the compute machine)
