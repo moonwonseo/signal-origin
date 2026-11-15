@@ -2,7 +2,8 @@
 
 For Moonwon and for the next agent. Rules: `AGENTS.md`. The handoff of 14 Nov (V4 check, V5, volatility gauge,
 dashboard, data work) is in `docs/HANDOFF_2026-11-14.md`. This file covers what changed on 14-15 Nov, with the
-focus on the autoresearch loop.
+focus on the autoresearch loop. One file with all changes since V4 (V4 check, V5, studies, loop, defect, dashboard,
+deck, repository): `docs/HANDOVER_SINCE_V4.md`.
 
 Final presentation: Wed 18 Nov 2026, 10 minutes, PDF on Canvas by 1:30 PM. Celine has the slide deck
 (Google Slides, "Final Presentation").

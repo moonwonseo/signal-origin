@@ -58,6 +58,7 @@ Primary cell: +10% within 63 sessions. Final presentation: 10 minutes, PDF, due 
   erratum at the end of each RESULTS file. Main change: the ENSO lead at 21 sessions now meets 0 of 4 bars (it was 3),
   and the two secondary weather leads of the Direction study are gone. The XGBoost study verdict does not change.
 - Details and numbers: `docs/HANDOFF.md` (15 Nov) and `docs/HANDOFF_2026-11-14.md` (to 14 Nov).
+- All changes since V4 in one file, written for Moonwon: `docs/HANDOVER_SINCE_V4.md`.
 
 ## Branches
 - `main`: Moonwon's V4 publication package plus, from 15 Nov 2026, everything of `v5-weather` (merged at Celine's
