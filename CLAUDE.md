@@ -2,6 +2,12 @@
 
 Follow `AGENTS.md` (project rules and layout) and read `docs/HANDOFF.md` before starting work.
 
+## Communication and compute (rules from Celine, 14 Nov 2026)
+1. Always write to Celine in ASD-STE100 Simplified Technical English.
+2. Make each report concise. Go straight to the point.
+3. After each report, give proposed concrete actions.
+4. Use the Mac mini for training and for all compute-intensive tasks (see `AGENTS.md`).
+
 Claude-specific notes:
 - Celine prefers direct, opinionated answers and honest epistemic standards. When she lists her understanding
   back to you, correct only what is factually wrong, briefly.

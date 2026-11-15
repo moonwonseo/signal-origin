@@ -4,10 +4,30 @@ Exploratory research into whether weather and freight context improve estimates 
 
 This repository contains the project's modeling methods, tests, documentation, and an offline **synthetic demo**. It excludes third-party observations and historical row-level outputs. The public demo's scores are generated software examples, not the original research results.
 
-## Status on branch `v5-weather` (14 November 2026)
+## Status (15 November 2026)
 
-This branch adds V5 and three exploratory studies on top of V4 without modifying V4's code or outputs.
-Summary for the primary target (+10% at any close within 63 sessions, test years 2012–2026, 3,122 dates; Brier, lower is better):
+V5, six exploratory studies and an autoresearch loop were added on top of V4 without changes to V4's code or outputs.
+
+**Latest work: "when to buy coffee" (autoresearch loop, 15 November).** The question was defined again for a
+purchasing team that must buy its volume and selects only the time: each week, buy early, steadily, or late.
+The score is the cost saving against steady buying over a 63-session horizon, with a penalty that rises with
+the number of trials. An AI agent ran 100 pre-registered iterations (rules, linear models, tree models, new public data).
+
+| Step | Result for the best rule (iteration 86: ENSO winter state and Brazil Jan-Mar temperature agree) |
+| --- | --- |
+| Development, 2009-2022 | RATIO +0.79; necessary after 110 trials: 0.71 |
+| Placebo (weather rotated in time, 17 runs) | Passed: 0 of 17 above the real data |
+| Test, 2023-Oct 2026 | RATIO +0.37; pass limit 0.5: **not confirmed** |
+
+**No confirmed predictor.** With careful settings the rule gives about 0.6, and it shows no skill before 2009.
+All six fitted models were worse than fixed-sign rules. The loop also found a defect in the roll adjustment of
+the price series; three earlier studies were run again and carry an erratum.
+See [the autoresearch folder](research/autoresearch/README.md), [its results](research/autoresearch/Autoresearch_RESULTS.md)
+and [the handoff](docs/HANDOFF.md).
+
+![Hill-climb of the autoresearch loop](research/autoresearch/results/hillclimb.png)
+
+**First target (+10% at any close within 63 sessions, test years 2012-2026, 3,122 dates; Brier, lower is better):**
 
 | Approach | Brier | Verdict |
 | --- | --- | --- |
@@ -16,10 +36,12 @@ Summary for the primary target (+10% at any close within 63 sessions, test years
 | Weather → volatility forecasts | — | No improvement (pre-registered) |
 | CFTC fund positioning added to the gauge | 0.275 | Reliably worse (pre-registered) |
 | 37-node, 8-country weather PCA added to the gauge | 0.249 | Not significant (pre-registered) |
+| XGBoost on 37-node weather; direction of returns; ENSO and CFTC | — | No alpha; no direction edge (pre-registered; errata of 15 November) |
 | **Volatility gauge (unfitted)** | **0.240** | Beats B0 (gain 0.020, range 0.001 to 0.039); exploratory |
 
 Historical results come from local runs on excluded inputs; V5's official run awaits both teammates' sign-off.
-See [AGENTS.md](AGENTS.md), [the handoff](docs/HANDOFF.md) and [V5 changes](docs/V5_CHANGES.md).
+See [AGENTS.md](AGENTS.md), [the handoff](docs/HANDOFF.md), [the handoff of 14 November](docs/HANDOFF_2026-11-14.md)
+and [V5 changes](docs/V5_CHANGES.md).
 
 ## Try the demo
 
