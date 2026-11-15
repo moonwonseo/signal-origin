@@ -99,7 +99,7 @@ fig, ax = plt.subplots(figsize=(W, H))
 ys = np.arange(len(fam))
 ax.barh(ys, [v for _, v in fam], height=0.62, color=BLUE, zorder=3)
 for y, (lab, v) in zip(ys, fam):
-    if v >= 0.2:
+    if v >= 0.2 and not (v - 0.09 < need < v):       # inside the bar, unless the label would cross the orange line
         ax.text(v - 0.012, y, f"+{v:.2f}", va="center", ha="right", fontsize=10, color="white", fontweight="bold")
     else:
         ax.text(v + 0.012, y, f"+{v:.2f}" if v else "0.00", va="center", fontsize=10, color=INK)
