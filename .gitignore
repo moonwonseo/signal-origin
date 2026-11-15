@@ -42,3 +42,7 @@ LOCAL_ONLY_*
 /research/autoresearch/out/
 /research/autoresearch/data/
 /research/autoresearch/state.json
+/research/prototype/data/
+/research/prototype/demo_data/
+/research/prototype/signal_origin_dashboard*.html
+node_modules/

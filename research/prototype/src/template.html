@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal-Origin · when to buy arabica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6EB; --surface:#FBFBF4; --ink:#2A342D; --muted:#5F665F; --line:#DCDECF;
+  --teal:#1E7796; --green:#2A342D; --bean:#7D5341; --tan:#BFA58C;
+  --alert:#A9442C; --watch:#B9822A; --ok:#4E7A5E; --calm:#8DB3A3;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 28px 64px}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+  border-bottom:2px solid var(--teal);padding-bottom:10px;margin-bottom:36px}
+.brand{font:900 22px/1 var(--display);color:var(--teal);letter-spacing:-.01em}
+.brand small{font:500 14px var(--body);color:var(--muted);letter-spacing:0;margin-left:10px}
+.asof{color:var(--muted);font-size:14px}
+h1{font:900 clamp(34px,5.4vw,58px)/1.02 var(--display);letter-spacing:-.02em;margin:0 0 16px;color:var(--teal)}
+h2{font:700 clamp(24px,3vw,32px)/1.15 var(--display);margin:0 0 10px;color:var(--ink)}
+h3{font:700 20px/1.2 var(--display);margin:32px 0 8px}
+p{margin:0 0 12px;max-width:68ch}
+.lede{font-size:18px;color:var(--muted)}
+section{margin-top:64px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;margin-top:0}
+.dialcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 22px 18px}
+.dial{width:100%;height:auto;display:block}
+.dial .seg{fill:none;stroke-width:18;opacity:.26;transition:opacity .4s}
+.dial .seg.on{opacity:1}
+.dial .late{stroke:var(--bean)} .dial .steady{stroke:var(--tan)} .dial .early{stroke:var(--teal)}
+.dial .needle{stroke:var(--ink)} .dial .hub{fill:var(--ink)}
+.dial text{fill:var(--muted);font:500 13px var(--body)}
+.dial text.on{fill:var(--ink);font-weight:600}
+.bignum{font:900 60px/1 var(--display);color:var(--bean);text-align:center;margin-top:-2px}
+.bignum.early{color:var(--teal)} .bignum.late{color:var(--bean)} .bignum.steady,.bignum.none{color:var(--ink)}
+.bigcap{text-align:center;font-size:15px;margin:8px auto 0;max-width:38ch}
+.horizons{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.hz{border-top:2px solid var(--line);padding-top:8px}
+.hz b{font:700 24px/1.05 var(--display);color:var(--ink);display:block}
+.hz span{font-size:13px;color:var(--muted);display:block;margin-top:3px}
+.note{font-size:14px;color:var(--muted)}
+.flag{display:inline-block;font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;border:1.5px solid currentColor;text-decoration:none}
+.flag.alert{color:var(--alert)} .flag.watch{color:var(--watch)} .flag.ok{color:var(--ok)} .flag.none{color:var(--muted);font-weight:500}
+.chart{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.chart .grid{stroke:var(--line)} .chart text{fill:var(--muted);font:12px var(--body)}
+.chart .zero{stroke:var(--ink);stroke-width:1;opacity:.55}
+.chart .px{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linejoin:round}
+.chart .band.early{fill:var(--teal);opacity:.2} .chart .band.late{fill:var(--bean);opacity:.2}
+.chart .mark{stroke:var(--alert);stroke-width:1.4;stroke-dasharray:4 4}
+.chart .lbl{fill:var(--alert);font-weight:600}
+.chart .cross{stroke:var(--ink);stroke-width:1;opacity:.45;pointer-events:none}
+.chart .hit{fill:transparent}
+.chart .bar.early,.chart .dot.early{fill:var(--teal)} .chart .bar.late,.chart .dot.late{fill:var(--bean)}
+.chart .bar.steady,.chart .dot.steady{fill:var(--tan)}
+.chart .dot{stroke:var(--surface);stroke-width:2}
+.chart .testzone{fill:var(--tan);opacity:.16}
+.chart .quad.early{fill:var(--teal);opacity:.09} .chart .quad.late{fill:var(--bean);opacity:.09}
+.chart .qname{font:700 13px var(--body);letter-spacing:.08em}
+.chart .qname.early{fill:var(--teal)} .chart .qname.late{fill:var(--bean)}
+.chart .yr{fill:var(--ink);font:500 12px var(--body)} .chart .yr.cur{font-weight:700}
+.chart .val{fill:var(--ink);font:600 12px var(--body)}
+.chart .now{fill:none;stroke:var(--ink);stroke-width:2}
+.chart .what{fill:none;stroke:var(--alert);stroke-width:2.4}
+.chart .l1{stroke:var(--teal);stroke-width:2;fill:none} .chart .l2{stroke:var(--bean);stroke-width:2;fill:none;stroke-dasharray:6 4}
+.chart .end1{fill:var(--teal);font-weight:600} .chart .end2{fill:var(--bean);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);margin:10px 0 0}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.legend i.ln{width:22px;height:0;border-top:2px solid;border-radius:0;vertical-align:middle}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
+.callout{border-left:4px solid var(--teal);padding:4px 0 4px 16px;margin:18px 0}
+.callout b{font-family:var(--display);font-size:20px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+details{margin-top:12px} summary{cursor:pointer;color:var(--teal);font-size:14px}
+/* planner */
+.form{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:18px 0 6px}
+.field label,.field .lab{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.field input[type=number]{width:100%;font:500 18px var(--body);color:var(--ink);background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.field output{font:700 18px var(--display)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:3px;margin:8px 0 4px}
+.seg label{font-size:14px;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--muted)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked + span{color:var(--surface)}
+.seg label:has(input:checked){background:var(--teal);color:var(--surface)}
+.seg label:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
+.plancard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:14px}
+.act{font:700 clamp(22px,2.6vw,28px)/1.2 var(--display);margin:0 0 6px;max-width:none}
+.cover{width:100%;height:auto;display:block;margin:10px 0 2px}
+.cover text{fill:var(--muted);font:12px var(--body)} .cover .t{fill:var(--ink);font-weight:600}
+.cover .rail{stroke:var(--line);stroke-width:10;stroke-linecap:round}
+.cover .move{stroke:var(--teal);stroke-width:10;stroke-linecap:round;opacity:.45}
+.cover .nowdot{fill:var(--ink)} .cover .tgt{fill:var(--surface);stroke:var(--teal);stroke-width:4}
+/* rule */
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.qcard h3{margin:0 0 6px;font-size:19px}
+.qcard .ans{font:700 22px/1.1 var(--display);margin-top:10px}
+.qcard .ans small{font:400 13px var(--body);color:var(--muted);display:block;margin-top:4px}
+.logic{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.logic div{border-top:3px solid var(--line);padding-top:8px;font-size:14px;color:var(--muted)}
+.logic b{display:block;font:700 19px var(--display);color:var(--ink)}
+.logic .early{border-color:var(--teal)} .logic .late{border-color:var(--bean)} .logic .steady{border-color:var(--tan)}
+.sliders{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:22px;align-items:end;margin-top:14px}
+.whatout{font-size:15px} .whatout b{font:700 22px var(--display);display:block}
+button.link{font:inherit;font-size:14px;color:var(--teal);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.steps div{border-top:2px solid var(--line);padding-top:8px;font-size:13px;color:var(--muted)}
+.steps b{display:block;font:700 19px var(--display);color:var(--ink)}
+.steps .next{border-color:var(--teal)} .steps .next b{color:var(--teal)}
+/* trust */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.tile .k{font-size:13px;color:var(--muted)}
+.tile .v{font:900 44px/1.05 var(--display);margin:6px 0 4px}
+.tile p{font-size:14px;color:var(--muted);margin:0 0 10px}
+ul.plain{margin:14px 0 0;padding-left:20px;max-width:76ch} ul.plain li{margin-bottom:6px}
+/* gauge */
+.spark{width:100%;height:auto;display:block;margin-top:8px}
+.spark .area{fill:var(--tan);opacity:.35} .spark .ln{stroke:var(--bean);fill:none;stroke-width:1.4}
+.spark .today{stroke:var(--teal);stroke-width:2} .spark text{fill:var(--muted);font:12px var(--body)}
+#tip{position:absolute;z-index:10;pointer-events:none;background:var(--ink);color:var(--surface);font-size:13px;line-height:1.4;
+  padding:8px 10px;border-radius:8px;max-width:260px;box-shadow:0 4px 14px rgba(42,52,45,.18)}
+#tip b{font-weight:600} #tip span{opacity:.8}
+footer{margin-top:72px;padding-top:16px;border-top:2px solid var(--teal);font-size:13px;color:var(--muted)}
+footer p{max-width:90ch}
+@media (max-width:820px){
+  .hero,.twocol,.form,.tiles,.sliders{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .seg{border-radius:22px}
+  .wrap{padding:20px 18px 48px}
+}
+@media (prefers-reduced-motion:no-preference){ .needle{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mast"><span class="brand">Signal-Origin<small>arabica buying desk</small></span><span class="asof" id="asof"></span></div>
+
+  <section class="hero" aria-labelledby="h-now">
+    <div>
+      <h1 id="h-now">Buy early, buy steady, or buy late?</h1>
+      <p class="lede">One call each week for a roastery’s next three months of arabica buying. It comes from a fixed rule with two questions: one about the Pacific Ocean, one about the Brazilian summer.</p>
+      <p id="why"></p>
+      <p><a class="flag watch" href="#h-trust">Research signal · not confirmed on new data</a></p>
+    </div>
+    <div class="dialcard">
+      <svg class="dial" id="dial" viewBox="-52 -6 424 186" role="img" aria-labelledby="dial-t"><title id="dial-t">This week’s call</title></svg>
+      <div class="bignum" id="big"></div>
+      <p class="bigcap" id="bigcap"></p>
+      <div class="horizons" id="inputs"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-plan">
+    <h2 id="h-plan">What the call means for your orders</h2>
+    <p>The call moves your forward cover, not your volume. Steady buying keeps about 1.5 months of need on order. “Buy early” extends cover to 3 months. “Buy late” lets cover run down so that you buy each lot as late as your operation allows.</p>
+    <div class="form">
+      <div class="field"><label for="need">Monthly need (60 kg bags)</label><input id="need" type="number" min="0" step="10" value="400" inputmode="numeric"></div>
+      <div class="field"><label for="cover">Cover you hold now: <output id="coverout" for="cover"></output></label><input id="cover" type="range" min="0" max="3" step="0.25" value="1.5"></div>
+      <div class="field"><label for="price">Futures price (¢/lb)</label><input id="price" type="number" min="0" step="0.1" inputmode="decimal"></div>
+    </div>
+    <div class="field"><span class="lab">Call to plan with</span>
+      <div class="seg" role="radiogroup" aria-label="Call to plan with" id="callpick">
+        <label><input type="radio" name="callpick" value="now" checked><span id="pick-now">This week’s call</span></label>
+        <label><input type="radio" name="callpick" value="early"><span>Buy early</span></label>
+        <label><input type="radio" name="callpick" value="steady"><span>Steady</span></label>
+        <label><input type="radio" name="callpick" value="late"><span>Buy late</span></label>
+      </div>
+    </div>
+    <div class="plancard" aria-live="polite">
+      <p class="act" id="act"></p>
+      <p class="note" id="actsub" style="max-width:80ch"></p>
+      <svg class="cover" id="coverbar" viewBox="0 0 1000 86" role="img" aria-label="Cover now and target cover, in months"></svg>
+      <div class="horizons" id="planstats"></div>
+    </div>
+    <p class="note" style="margin-top:12px">Futures part of the price only. Differentials, freight, storage and financing are not in these amounts.</p>
+  </section>
+
+  <section aria-labelledby="h-rule">
+    <h2 id="h-rule">How the call is made</h2>
+    <p>The rule asks two questions once a year and holds the answer until the next February. It has no fitted weights, so you can check it by hand.</p>
+    <div class="twocol">
+      <div class="qcard"><h3>1 · Was the tropical Pacific warm in January?</h3>
+        <p class="note">Sea-surface temperature in the Niño 3.4 region against its normal (NOAA). A warm January is the El Niño side. The rule reads the value from 15 February.</p>
+        <div class="ans" id="ans1"></div></div>
+      <div class="qcard"><h3>2 · Was the Brazilian summer hotter than usual?</h3>
+        <p class="note">Mean temperature in January–March, when the beans fill, in six regions with 94% of Brazil’s arabica, against the mean of the last five years (NASA). Weather is used 10 days late.</p>
+        <div class="ans" id="ans2"></div></div>
+    </div>
+    <div class="logic">
+      <div class="early"><b>Both yes → buy early</b>Warm ocean and hot summer. In 2009–2022, prices rose more often in the months after.</div>
+      <div class="steady"><b>One yes, one no → steady</b>The two readings disagree. The rule makes no call.</div>
+      <div class="late"><b>Both no → buy late</b>Cool ocean and cool summer. In 2009–2022, prices fell more often in the months after.</div>
+    </div>
+
+    <h3>Each year on the two questions</h3>
+    <p class="note">One dot for each year, 2009–2026. Move the two sliders to see what the rule would say for other readings, for example those of early 2027.</p>
+    <svg class="chart" id="quad" viewBox="0 0 1000 440" role="img" aria-label="Years by January Pacific temperature and Brazil January to March heat, with the call of the rule"></svg>
+    <div class="sliders">
+      <div class="field"><label for="s-enso">Pacific in January: <output id="o-enso" for="s-enso"></output></label><input id="s-enso" type="range" min="-2" max="3" step="0.01"></div>
+      <div class="field"><label for="s-heat">Brazil Jan–Mar heat: <output id="o-heat" for="s-heat"></output></label><input id="s-heat" type="range" min="-1" max="2" step="0.01"></div>
+      <div class="whatout" aria-live="polite">With these readings the rule says<b id="whatout"></b><button class="link" id="reset" type="button"></button></div>
+    </div>
+
+    <h3>When the call can change</h3>
+    <div class="steps" id="steps"></div>
+    <p class="note" id="stepnote" style="margin-top:10px"></p>
+
+    <h3 id="trackh"></h3>
+    <p class="note">Running mean temperature from 1 January, against the same quantity in the five years before. The gap on the last day is the answer to question 2.</p>
+    <svg class="chart" id="season" viewBox="0 0 1000 260" role="img" aria-label="Running January to March mean temperature in Brazil against the five-year reference"></svg>
+  </section>
+
+  <section aria-labelledby="h-past">
+    <h2 id="h-past">What the rule did, 2009–2026</h2>
+    <p>Coffee C price each week, with the call that the rule gave at that time. Each call used only data that were public on its day.</p>
+    <svg class="chart" id="pchart" viewBox="0 0 1000 330" role="img" aria-label="Coffee C weekly price with the calls of the rule"></svg>
+    <div class="legend"><span><i style="background:var(--teal);opacity:.35"></i>Buy early</span><span><i style="background:var(--bean);opacity:.35"></i>Buy late</span><span><i style="background:var(--surface);border:1px solid var(--line)"></i>Steady</span><span><i class="ln" style="border-color:var(--ink)"></i>Coffee C, ¢/lb</span><span><i class="ln" style="border-color:var(--alert);border-top-style:dashed"></i>start of the new-data test</span></div>
+
+    <h3>Money saved against steady buying, by year</h3>
+    <p class="note">Percent of that year’s purchase cost (futures part). Above zero, the call beat steady buying. Each bar has the colour of the call that held for most of the year.</p>
+    <svg class="chart" id="ychart" viewBox="0 0 1000 300" role="img" aria-label="Saving against steady buying by year, as a percent of the yearly purchase cost"></svg>
+    <div class="legend"><span><i style="background:var(--teal)"></i>Mostly buy early</span><span><i style="background:var(--bean)"></i>Mostly buy late</span><span><i style="background:var(--tan)"></i>Mostly steady</span></div>
+    <p id="pastsum" style="margin-top:14px"></p>
+    <details><summary>Show the table</summary><table id="ytable"></table></details>
+  </section>
+
+  <section aria-labelledby="h-trust">
+    <h2 id="h-trust">How far to trust the call</h2>
+    <p id="trustlede"></p>
+    <div class="tiles" id="tiles"></div>
+    <p class="note" style="margin-top:12px">Score = saving against steady buying for each unit of its year-to-year swing. Steady buying scores zero. The ranges are 95% bootstrap ranges.</p>
+    <div class="callout"><b>Use the call as one input, next to your own view of the market.</b>
+      <ul class="plain" id="limits"></ul></div>
+  </section>
+
+  <section aria-labelledby="h-risk">
+    <h2 id="h-risk">How rough is the market now?</h2>
+    <p>A second, separate reading. It estimates the chance that the Coffee C price touches 10% above today’s level. It reads recent price turbulence through a fixed formula. It measures turbulence, not direction.</p>
+    <div class="twocol" style="align-items:start">
+      <div class="dialcard">
+        <div class="bignum" id="gbig" style="margin-top:4px"></div>
+        <p class="bigcap">chance of a 10% rise within the next three months</p>
+        <div class="horizons" id="horizons"></div>
+      </div>
+      <div>
+        <p id="gpct"></p>
+        <svg class="spark" id="spark" viewBox="0 0 520 130" role="img" aria-label="Gauge reading since 2012"></svg>
+        <p class="note" id="gnote" style="margin-top:10px"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p id="sources"></p>
+    <p id="method"></p>
+    <p>Research prototype for AIPI 590 (Duke), by Celine Yang and Moonwon Seo. Not purchasing advice; no savings are promised. Built with AI assistance (Claude), reviewed by the team.</p>
+  </footer>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+/*__ENGINE__*/
+</script>
+<script>
+/*__DATA__*/
+"use strict";
+const E = SignalEngine, eng = E.create(D);
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+const fmtDate = s => new Date(s+"T00:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"});
+const fmtDay = s => new Date(s+"T00:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"short",timeZone:"UTC"});
+const pct = (x, d=0) => (x*100).toFixed(d) + "%";
+const sgn = (v, d=2) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d);
+const usd = v => "$" + Math.round(v).toLocaleString("en-US");
+const num = v => Math.round(v).toLocaleString("en-US");
+const LABEL = { early:"Buy early", steady:"Steady", late:"Buy late" };
+const ms = E.toMs;
+
+/* The page date. Add ?date=YYYY-MM-DD to the address to see another day. */
+const TODAY = (() => {
+  const q = new URLSearchParams(location.search).get("date");
+  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q;
+  const n = new Date();
+  return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`;
+})();
+const CALL = eng.callOn(TODAY);
+
+/* ---------- tooltip ---------- */
+const tip = $("tip");
+function showTip(evt, html){
+  tip.innerHTML = html; tip.hidden = false;
+  const w = tip.offsetWidth, vw = document.documentElement.clientWidth;
+  let x = evt.pageX + 14; if (x + w > window.scrollX + vw - 8) x = evt.pageX - w - 14;
+  tip.style.left = Math.max(8, x) + "px"; tip.style.top = (evt.pageY + 14) + "px";
+}
+function hideTip(){ tip.hidden = true; }
+function svgX(svg, evt){ const p = svg.createSVGPoint(); p.x = evt.clientX; p.y = evt.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); }
+function hover(el, html){ el.addEventListener("mousemove", e => showTip(e, typeof html === "function" ? html() : html)); el.addEventListener("mouseleave", hideTip); }
+
+/* ---------- this week's call ---------- */
+(function(){
+  const c = CALL, svg = $("dial"), cx = 160, cy = 160, r = 128;
+  $("asof").textContent = c.state == null ? "No call for " + fmtDate(TODAY)
+    : `Call for the week of ${fmtDate(c.weekOf)} · set on ${fmtDate(c.decision)}`;
+  const pt = (f, rr=r) => [cx - rr*Math.cos(Math.PI*f), cy - rr*Math.sin(Math.PI*f)];
+  const gap = .008;
+  [["late",0,1/3],["steady",1/3,2/3],["early",2/3,1]].forEach(([k,a,b]) => {
+    const [x1,y1] = pt(a + (a ? gap : 0)), [x2,y2] = pt(b - (b < 1 ? gap : 0));
+    S("path",{d:`M${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2}`, class:"seg "+k+(c.name===k?" on":"")}, svg);
+    const [tx,ty] = pt((a+b)/2, r + 22);
+    S("text",{x:tx, y:ty+4, "text-anchor": k==="late"?"end":k==="early"?"start":"middle", class:c.name===k?"on":""}, svg).textContent = LABEL[k];
+  });
+  if (c.state != null) {
+    const f = { late:1/6, steady:1/2, early:5/6 }[c.name];
+    const needle = S("line",{x1:cx,y1:cy,x2:cx-r+26,y2:cy,class:"needle","stroke-width":4,"stroke-linecap":"round",style:`transform-origin:${cx}px ${cy}px;transform:rotate(90deg)`},svg);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ needle.style.transform=`rotate(${180*f}deg)`; }));
+  }
+  S("circle",{cx,cy,r:8,class:"hub"},svg);
+  const big = $("big");
+  if (c.state == null) {
+    big.textContent = "No call"; big.className = "bignum none";
+    $("bigcap").textContent = "The data in this file end before this date. Add the new readings and build the page again.";
+    $("why").textContent = "";
+    $("inputs").innerHTML = "";
+    return;
+  }
+  big.textContent = LABEL[c.name]; big.className = "bignum " + c.name;
+  $("bigcap").textContent = { early:"Bring purchases forward: cover the next three months now.",
+    steady:"Buy at your usual, even pace. The rule makes no call this week.",
+    late:"Hold back: buy each lot as late as your operation allows." }[c.name];
+  const e = c.enso.value, h = c.heat.value, sofar = c.heat.final ? "" : " so far";
+  $("why").textContent = `In January ${c.enso.year} the tropical Pacific was ${e > 0 ? "warmer" : "cooler"} than normal (${sgn(e)} °C). ` +
+    `Brazil’s arabica regions were ${h > 0 ? "hotter" : "cooler"} than their five-year mean in January–March ${c.heat.year}${sofar} (${sgn(h)} °C). ` +
+    (c.state ? `Both readings point the same way, so the rule says ${LABEL[c.name].toLowerCase()}.` : "The two readings disagree, so the rule makes no call.");
+  $("inputs").innerHTML =
+    `<div class="hz"><b>${sgn(e)} °C</b><span>Pacific, January ${c.enso.year}: ${e > 0 ? "warm" : "cool"}</span></div>` +
+    `<div class="hz"><b>${sgn(h)} °C</b><span>Brazil heat, Jan–Mar ${c.heat.year}${sofar}: ${h > 0 ? "hot" : "cool"}</span></div>` +
+    `<div class="hz"><b>${fmtDate(c.calendar.nextReview).replace(/ \d{4}$/, "")}</b><span>${c.calendar.phase === "held" ? "next review, " + c.calendar.year : "weekly updates until this date"}</span></div>`;
+})();
+
+/* ---------- planner ---------- */
+(function(){
+  const g = D.latest_close, price = $("price");
+  price.value = g.value.toFixed(1);
+  if (CALL.state != null) $("pick-now").textContent = `This week’s call (${LABEL[CALL.name].toLowerCase()})`;
+  else { document.querySelector('#callpick input[value="now"]').disabled = true; document.querySelector('#callpick input[value="steady"]').checked = true; $("pick-now").textContent = "This week’s call (none)"; }
+  function render(){
+    const pick = document.querySelector('#callpick input:checked').value, call = pick === "now" ? CALL.name : pick;
+    const cover = +$("cover").value, p = E.plan({ call, monthlyBags:+$("need").value, coverNow:cover, priceCents:+price.value });
+    $("coverout").textContent = cover.toFixed(2).replace(/\.?0+$/, "") + (cover === 1 ? " month" : " months");
+    const mo = v => v.toFixed(2).replace(/\.?0+$/, "") + (v === 1 ? " month" : " months");
+    if (p.action === "buy") {
+      $("act").textContent = `Buy about ${num(p.bagsToMove)} bags now.`;
+      $("actsub").textContent = `That takes your cover from ${mo(p.coverNow)} to ${mo(p.targetMonths)} of need, the “${LABEL[call].toLowerCase()}” target.`;
+    } else if (p.action === "wait") {
+      $("act").textContent = `Place no forward orders for about ${p.weeksToTarget.toFixed(1).replace(/\.0$/, "")} weeks.`;
+      $("actsub").textContent = `Your cover of ${mo(p.coverNow)} runs down to ${mo(p.targetMonths)}, the “${LABEL[call].toLowerCase()}” target. That defers about ${num(p.bagsToMove)} bags. ` +
+        (p.targetMonths === 0 ? "After that, buy each lot as late as your operation allows." : "After that, buy at your usual pace.");
+    } else {
+      $("act").textContent = "Keep your usual buying pace.";
+      $("actsub").textContent = `Your cover of ${mo(p.coverNow)} is already at the “${LABEL[call].toLowerCase()}” target.`;
+    }
+    const sv = $("coverbar"); sv.innerHTML = "";
+    const X = v => 60 + v/3*880, y = 34;
+    S("line",{x1:X(0),x2:X(3),y1:y,y2:y,class:"rail"},sv);
+    if (p.action !== "keep") S("line",{x1:X(p.coverNow),x2:X(p.targetMonths),y1:y,y2:y,class:"move"},sv);
+    [[0,"0 · buy late"],[1.5,"1.5 months · steady"],[3,"3 months · buy early"]].forEach(([v,t]) => {
+      S("line",{x1:X(v),x2:X(v),y1:y+10,y2:y+18,stroke:"var(--line)","stroke-width":2},sv);
+      S("text",{x:X(v),y:y+36,"text-anchor":v===0?"start":v===3?"end":"middle",class:p.targetMonths===v?"t":""},sv).textContent = t;
+    });
+    S("circle",{cx:X(p.targetMonths),cy:y,r:11,class:"tgt"},sv);
+    S("circle",{cx:X(p.coverNow),cy:y,r:6,class:"nowdot"},sv);
+    const tx = X(p.coverNow), anchor = tx < 110 ? "start" : tx > 890 ? "end" : "middle";
+    S("text",{x:tx,y:y-16,"text-anchor":anchor,class:"t"},sv).textContent = p.action === "keep" ? "now = target" : "now";
+    $("planstats").innerHTML =
+      `<div class="hz"><b>${num(p.bagsToMove)} bags</b><span>volume that this call moves</span></div>` +
+      `<div class="hz"><b>${usd(p.valueUsd)}</b><span>its value at ${(+price.value).toFixed(1)} ¢/lb</span></div>` +
+      `<div class="hz"><b>${usd(p.tenPctUsd)}</b><span>effect of a 10% price move on it</span></div>`;
+    const gn = $("gnote"); if (gn) gn.dataset.move = usd(p.swingTenPctUsd);
+    document.dispatchEvent(new CustomEvent("plan", { detail:p }));
+  }
+  ["need","cover","price"].forEach(id => $(id).addEventListener("input", render));
+  $("callpick").addEventListener("change", render);
+  render();
+})();
+
+/* ---------- the two questions ---------- */
+/* state = main call of the calendar year (saved run); name = settled call of the year's readings (engine) */
+const YEARS = D.yearly.map(r => Object.assign({}, eng.yearSummary(r.year), r));
+(function(){
+  const c = CALL;
+  if (c.state != null) {
+    const e = c.enso.value, h = c.heat.value;
+    $("ans1").innerHTML = `${e > 0 ? "Yes" : "No"}: ${sgn(e)} °C<small>January ${c.enso.year}</small>`;
+    $("ans2").innerHTML = `${h > 0 ? "Yes" : "No"}: ${sgn(h)} °C<small>January–March ${c.heat.year}${c.heat.final ? "" : ", so far"}</small>`;
+  } else { $("ans1").textContent = "No reading"; $("ans2").textContent = "No reading"; }
+
+  const svg = $("quad"), W = 1000, H = 440, pad = {l:62,r:22,t:20,b:50}, xd = [-2,3], yd = [-1,2];
+  const X = v => pad.l + (v-xd[0])/(xd[1]-xd[0])*(W-pad.l-pad.r), Y = v => pad.t + (yd[1]-v)/(yd[1]-yd[0])*(H-pad.t-pad.b);
+  S("rect",{x:X(0),y:Y(yd[1]),width:X(xd[1])-X(0),height:Y(0)-Y(yd[1]),class:"quad early"},svg);
+  S("rect",{x:X(xd[0]),y:Y(0),width:X(0)-X(xd[0]),height:Y(yd[0])-Y(0),class:"quad late"},svg);
+  for (let v=xd[0]; v<=xd[1]; v++){ S("line",{x1:X(v),x2:X(v),y1:pad.t,y2:H-pad.b,class:"grid"},svg); S("text",{x:X(v),y:H-pad.b+16,"text-anchor":"middle"},svg).textContent = sgn(v,0)+"°"; }
+  for (let v=yd[0]; v<=yd[1]; v++){ S("line",{x1:pad.l,x2:W-pad.r,y1:Y(v),y2:Y(v),class:"grid"},svg); S("text",{x:pad.l-8,y:Y(v)+4,"text-anchor":"end"},svg).textContent = sgn(v,0)+"°"; }
+  S("line",{x1:X(0),x2:X(0),y1:pad.t,y2:H-pad.b,class:"zero"},svg); S("line",{x1:pad.l,x2:W-pad.r,y1:Y(0),y2:Y(0),class:"zero"},svg);
+  S("text",{x:W-pad.r-10,y:pad.t+20,"text-anchor":"end",class:"qname early"},svg).textContent = "BUY EARLY";
+  S("text",{x:pad.l+10,y:H-pad.b-10,class:"qname late"},svg).textContent = "BUY LATE";
+  S("text",{x:pad.l+10,y:pad.t+20,class:"qname"},svg).textContent = "STEADY";
+  S("text",{x:W-pad.r-10,y:H-pad.b-10,"text-anchor":"end",class:"qname"},svg).textContent = "STEADY";
+  S("text",{x:(pad.l+W-pad.r)/2,y:H-10,"text-anchor":"middle"},svg).textContent = "Pacific in January (Niño 3.4, °C against normal): cooler ← → warmer";
+  S("text",{x:16,y:(pad.t+H-pad.b)/2,"text-anchor":"middle",transform:`rotate(-90 16 ${(pad.t+H-pad.b)/2})`},svg).textContent = "Brazil Jan–Mar heat (°C against 5-year mean)";
+
+  /* year labels: first free place of eight around the dot */
+  const pts = YEARS.filter(r => r.enso != null && r.heat != null).map(r => ({ r, x:X(r.enso), y:Y(r.heat) }));
+  const boxes = pts.map(p => ({ x0:p.x-8, x1:p.x+8, y0:p.y-8, y1:p.y+8 }));
+  const hits = (a,b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+  const cur = CALL.heat ? CALL.heat.year : null;
+  pts.forEach(p => {
+    const t = "’" + String(p.r.year).slice(2), w = 22, h = 13, k = p.r.year === cur ? 6 : 0;
+    const cand = k ? [[16,4,"start"],[-16,4,"end"],[0,-17,"middle"],[0,26,"middle"]] : [[10,4,"start"],[-10,4,"end"],[0,-11,"middle"],[0,20,"middle"],[9,-8,"start"],[-9,-8,"end"],[9,16,"start"],[-9,16,"end"],[26,4,"start"],[-26,4,"end"],[0,-24,"middle"],[0,33,"middle"]];
+    let best = cand[0];
+    if (k) boxes.push({ x0:p.x-12, x1:p.x+12, y0:p.y-12, y1:p.y+12 });
+    for (const c of cand) {
+      const x0 = c[2]==="start" ? p.x+c[0] : c[2]==="end" ? p.x+c[0]-w : p.x+c[0]-w/2, b = { x0, x1:x0+w, y0:p.y+c[1]-h+2, y1:p.y+c[1]+2 };
+      if (!boxes.some(o => hits(b,o))) { best = c; boxes.push(b); break; }
+    }
+    p.label = [p.x+best[0], p.y+best[1], best[2], t];
+  });
+  pts.forEach(p => {
+    const d = S("circle",{cx:p.x,cy:p.y,r:6.5,class:"dot "+p.r.name},svg);
+    if (p.r.year === cur) S("circle",{cx:p.x,cy:p.y,r:11,class:"now"},svg);
+    S("text",{x:p.label[0],y:p.label[1],"text-anchor":p.label[2],class:"yr"+(p.r.year===cur?" cur":"")},svg).textContent = p.label[3];
+    const hitc = S("circle",{cx:p.x,cy:p.y,r:13,class:"hit"},svg);
+    hover(hitc, `<b>${p.r.year}: ${LABEL[p.r.name].toLowerCase()}</b><br>Pacific in January ${sgn(p.r.enso)} °C<br>Brazil Jan–Mar heat ${sgn(p.r.heat)} °C<br><span>Saving in ${p.r.year}: ${sgn(p.r.cost_pct,1)}% of the yearly cost${p.r.test ? " (new data)" : ""}</span>`);
+  });
+  const what = S("g",{},svg);
+  const ring = S("circle",{r:9,class:"what"},what), l1 = S("line",{class:"what"},what), l2 = S("line",{class:"what"},what);
+  const se = $("s-enso"), sh = $("s-heat"), last = YEARS.filter(r => r.enso != null && r.heat != null).at(-1);
+  const base = CALL.state != null ? { e:CALL.enso.value, h:CALL.heat.value, y:CALL.heat.year } : { e:last.enso, h:last.heat, y:last.year };
+  function draw(){
+    const e = +se.value, h = +sh.value, x = X(e), y = Y(h), st = E.NAMES[E.agree(e,h)];
+    ring.setAttribute("cx",x); ring.setAttribute("cy",y);
+    l1.setAttribute("x1",x-15); l1.setAttribute("x2",x+15); l1.setAttribute("y1",y); l1.setAttribute("y2",y);
+    l2.setAttribute("x1",x); l2.setAttribute("x2",x); l2.setAttribute("y1",y-15); l2.setAttribute("y2",y+15);
+    const moved = Math.abs(e-base.e) > .0051 || Math.abs(h-base.h) > .0051;
+    what.style.display = moved ? "" : "none";
+    $("o-enso").textContent = sgn(e) + " °C"; $("o-heat").textContent = sgn(h) + " °C";
+    const wo = $("whatout"); wo.textContent = LABEL[st]; wo.style.color = st === "early" ? "var(--teal)" : st === "late" ? "var(--bean)" : "var(--ink)";
+    $("reset").textContent = moved ? `Back to the ${base.y} readings` : "";
+  }
+  const snap = v => v.toFixed(2);
+  function reset(){ se.value = snap(base.e); sh.value = snap(base.h); draw(); }
+  se.addEventListener("input", draw); sh.addEventListener("input", draw); $("reset").addEventListener("click", reset);
+  reset();
+
+  /* calendar */
+  const k = CALL.calendar, steps = [
+    [k.windowOpen, "Heat window opens", "The January–March record of the new season starts."],
+    [k.firstHeat, "First heat reading", "30 days of data, used 10 days late. The call can change each week from here."],
+    [k.ensoDay, "Pacific value in use", "The January reading replaces that of the year before."],
+    [k.heatFinal, "Heat reading is final", "The call then holds until the next February."]];
+  const nextI = steps.findIndex(s => s[0] >= TODAY);
+  $("steps").innerHTML = steps.map((s,i) => `<div class="${i===nextI?"next":""}"><b>${fmtDate(s[0])}</b>${s[1]}. ${s[2]}</div>`).join("");
+  $("stepnote").textContent = CALL.state == null ? "" : k.phase === "held"
+    ? `Today, ${fmtDate(TODAY)}: the ${CALL.heat.year} readings are final, so the call holds until ${fmtDate(k.firstHeat)}.`
+    : `Today, ${fmtDate(TODAY)}: the ${k.year} readings are coming in, so the call can change each week until ${fmtDate(k.heatFinal)}.`;
+
+  /* season track */
+  const sy = base.y, tr = eng.seasonTrack(sy).filter(p => p.value != null && p.ref != null), sv = $("season");
+  $("trackh").textContent = `The ${sy} heat reading, day by day`;
+  if (tr.length > 1) {
+    const W2 = 1000, H2 = 260, p2 = {l:52,r:170,t:18,b:30}, vs = tr.flatMap(p => [p.value,p.ref]);
+    const lo = Math.floor(Math.min(...vs)*2)/2 - .5, hi = Math.ceil(Math.max(...vs)*2)/2 + .5;
+    const t0 = ms(tr[0].date), t1 = ms(`${sy}-03-31`), X2 = t => p2.l + (t-t0)/(t1-t0)*(W2-p2.l-p2.r), Y2 = v => p2.t + (hi-v)/(hi-lo)*(H2-p2.t-p2.b);
+    for (let v=lo; v<=hi+1e-9; v+=.5){ S("line",{x1:p2.l,x2:W2-p2.r,y1:Y2(v),y2:Y2(v),class:"grid"},sv); S("text",{x:p2.l-8,y:Y2(v)+4,"text-anchor":"end"},sv).textContent = v.toFixed(1)+"°"; }
+    [`${sy}-02-01`,`${sy}-02-15`,`${sy}-03-01`,`${sy}-03-15`,`${sy}-03-31`].forEach(d => S("text",{x:X2(ms(d)),y:H2-8,"text-anchor":"middle"},sv).textContent = fmtDay(d));
+    const line = key => "M" + tr.map(p => `${X2(ms(p.date)).toFixed(1)} ${Y2(p[key]).toFixed(1)}`).join(" L");
+    S("path",{d:line("ref"),class:"l2"},sv); S("path",{d:line("value"),class:"l1"},sv);
+    const end = tr.at(-1), xe = X2(ms(end.date));
+    let ya = Y2(end.value), yb = Y2(end.ref); if (Math.abs(ya-yb) < 16) { const m = (ya+yb)/2, up = ya < yb ? -1 : 1; ya = m + up*8; yb = m - up*8; }
+    S("text",{x:xe+8,y:ya+4,class:"end1"},sv).textContent = `${sy}: ${end.value.toFixed(2)} °C`;
+    S("text",{x:xe+8,y:yb+4,class:"end2"},sv).textContent = `5 years before: ${end.ref.toFixed(2)} °C`;
+    const cross = S("line",{y1:p2.t,y2:H2-p2.b,class:"cross",visibility:"hidden"},sv);
+    const hit = S("rect",{x:p2.l,y:p2.t,width:W2-p2.l-p2.r,height:H2-p2.t-p2.b,class:"hit"},sv);
+    hit.addEventListener("mousemove", e => { const x = svgX(sv,e).x, i = Math.max(0, Math.min(tr.length-1, Math.round((x-p2.l)/(W2-p2.l-p2.r)*(tr.length-1)))), p = tr[i];
+      cross.setAttribute("x1",X2(ms(p.date))); cross.setAttribute("x2",X2(ms(p.date))); cross.setAttribute("visibility","visible");
+      showTip(e, `<b>${fmtDate(p.date)}</b><br>Mean from 1 January: ${p.value.toFixed(2)} °C<br>Five years before: ${p.ref.toFixed(2)} °C<br><span>Gap ${sgn(p.value-p.ref)} °C</span>`); });
+    hit.addEventListener("mouseleave", () => { cross.setAttribute("visibility","hidden"); hideTip(); });
+  }
+})();
+
+/* ---------- history ---------- */
+(function(){
+  const P = D.weekly_close.map(([d,v]) => ({ d, t:ms(d), v, q:eng.q(d) })), svg = $("pchart"), W = 1000, H = 330, pad = {l:52,r:16,t:18,b:30};
+  const t0 = ms("2009-01-01"), t1 = P.at(-1).t, hi = Math.ceil(Math.max(...P.map(p => p.v))/100)*100;
+  const X = t => pad.l + (t-t0)/(t1-t0)*(W-pad.l-pad.r), Y = v => pad.t + (hi-v)/hi*(H-pad.t-pad.b);
+  const Q = P.filter(p => p.t >= ms("2008-12-25"));
+  let a = 0;
+  for (let i=1; i<=Q.length; i++) if (i === Q.length || Q[i].q !== Q[a].q) {
+    if (Q[a].q) { const x0 = Math.max(pad.l, X(Q[a].t)), x1 = X(i < Q.length ? Q[i].t : t1); if (x1 > x0) S("rect",{x:x0,y:pad.t,width:x1-x0,height:H-pad.t-pad.b,class:"band "+E.NAMES[Q[a].q]},svg); }
+    a = i;
+  }
+  for (let v=0; v<=hi; v+=100){ S("line",{x1:pad.l,x2:W-pad.r,y1:Y(v),y2:Y(v),class:"grid"},svg); S("text",{x:pad.l-8,y:Y(v)+4,"text-anchor":"end"},svg).textContent = v+"¢"; }
+  for (let y=2010; y<=2026; y+=2) S("text",{x:X(ms(y+"-01-01")),y:H-8,"text-anchor":"middle"},svg).textContent = y;
+  const vis = Q.filter(p => p.t >= t0);
+  S("path",{d:"M"+vis.map(p => `${X(p.t).toFixed(1)} ${Y(p.v).toFixed(1)}`).join(" L"),class:"px"},svg);
+  const xt = X(ms("2023-01-01")); S("line",{x1:xt,x2:xt,y1:pad.t,y2:H-pad.b,class:"mark"},svg);
+  S("text",{x:xt+8,y:pad.t+14,class:"lbl"},svg).textContent = "new data from 2023";
+  const cross = S("line",{y1:pad.t,y2:H-pad.b,class:"cross",visibility:"hidden"},svg), dot = S("circle",{r:4,fill:"var(--ink)",visibility:"hidden","pointer-events":"none"},svg);
+  const hit = S("rect",{x:pad.l,y:pad.t,width:W-pad.l-pad.r,height:H-pad.t-pad.b,class:"hit"},svg);
+  hit.addEventListener("mousemove", e => { const x = svgX(svg,e).x, t = t0 + (x-pad.l)/(W-pad.l-pad.r)*(t1-t0);
+    let i = vis.findIndex(p => p.t >= t); if (i < 0) i = vis.length-1; if (i > 0 && t - vis[i-1].t < vis[i].t - t) i--; const p = vis[i];
+    cross.setAttribute("x1",X(p.t)); cross.setAttribute("x2",X(p.t)); cross.setAttribute("visibility","visible");
+    dot.setAttribute("cx",X(p.t)); dot.setAttribute("cy",Y(p.v)); dot.setAttribute("visibility","visible");
+    showTip(e, `<b>Week to ${fmtDate(p.d)}</b><br>Coffee C ${p.v.toFixed(1)} ¢/lb<br><span>Call: ${LABEL[E.NAMES[p.q]].toLowerCase()}</span>`); });
+  hit.addEventListener("mouseleave", () => { cross.setAttribute("visibility","hidden"); dot.setAttribute("visibility","hidden"); hideTip(); });
+
+  /* saving by year */
+  const Yr = D.yearly, sv = $("ychart"), H2 = 300, p2 = {l:52,r:16,t:26,b:34}, vals = Yr.map(r => r.cost_pct);
+  const lo = Math.floor(Math.min(0,...vals)/2)*2, top = Math.ceil(Math.max(...vals)/2)*2, bw = (W-p2.l-p2.r)/Yr.length;
+  const Yb = v => p2.t + (top-v)/(top-lo)*(H2-p2.t-p2.b), Xb = i => p2.l + i*bw;
+  const ft = Yr.findIndex(r => r.test);
+  if (ft >= 0) { S("rect",{x:Xb(ft),y:p2.t-14,width:W-p2.r-Xb(ft),height:H2-p2.b-p2.t+14,class:"testzone"},sv); S("text",{x:Xb(ft)+8,y:p2.t,class:"lbl"},sv).textContent = "new data (test)"; }
+  for (let v=lo; v<=top; v+=2){ S("line",{x1:p2.l,x2:W-p2.r,y1:Yb(v),y2:Yb(v),class:v===0?"zero":"grid"},sv); S("text",{x:p2.l-8,y:Yb(v)+4,"text-anchor":"end"},sv).textContent = sgn(v,0)+"%"; }
+  const iMax = vals.indexOf(Math.max(...vals)), iMin = vals.indexOf(Math.min(...vals)), w = Math.min(30, bw*.56);
+  Yr.forEach((r,i) => {
+    const x = Xb(i) + (bw-w)/2, y0 = Yb(0), y1 = Yb(r.cost_pct), h = Math.abs(y1-y0), rr = Math.min(4, h), up = r.cost_pct >= 0;
+    if (h > .5) S("path",{class:"bar "+r.state, d: up
+      ? `M${x} ${y0} V${y1+rr} Q${x} ${y1} ${x+rr} ${y1} H${x+w-rr} Q${x+w} ${y1} ${x+w} ${y1+rr} V${y0} Z`
+      : `M${x} ${y0} V${y1-rr} Q${x} ${y1} ${x+rr} ${y1} H${x+w-rr} Q${x+w} ${y1} ${x+w} ${y1-rr} V${y0} Z`},sv);
+    else S("rect",{x,y:y0-1,width:w,height:2,class:"bar "+r.state},sv);
+    S("text",{x:x+w/2,y:H2-12,"text-anchor":"middle"},sv).textContent = "’" + String(r.year).slice(2);
+    if (i === iMax || i === iMin || i === Yr.length-1) S("text",{x:x+w/2,y:up?y1-6:y1+15,"text-anchor":"middle",class:"val"},sv).textContent = sgn(r.cost_pct,1)+"%";
+    const hitb = S("rect",{x:Xb(i),y:p2.t,width:bw,height:H2-p2.t-p2.b,class:"hit"},sv);
+    hover(hitb, `<b>${r.year}${r.test ? " · new data" : ""}</b><br>${sgn(r.cost_pct,1)}% of the yearly purchase cost<br><span>Mostly ${LABEL[r.state].toLowerCase()} (${pct(r.share_early)} of days early, ${pct(r.share_late)} late)</span>`);
+  });
+  const M = D.metrics;
+  $("pastsum").textContent = `Development, 2009–2022: the call saved money against steady buying in ${M.dev.years_pos} of ${M.dev.years} years, ${M.dev.pct_cost_saved.toFixed(1)}% of the yearly purchase cost on average. ` +
+    `New data, 2023–October 2026: ${M.test.years_pos} of ${M.test.years} years and ${M.test.pct_cost_saved.toFixed(1)}%, and the range of the test includes a loss.`;
+  $("ytable").innerHTML = `<tr><th>Year</th><th>Main call</th><th class="num">Pacific, January</th><th class="num">Brazil heat</th><th class="num">Saving, % of yearly cost</th></tr>` +
+    YEARS.map(r => `<tr><td>${r.year}${r.test ? " (new data)" : ""}</td><td>${LABEL[r.state]}</td><td class="num">${sgn(r.enso)} °C</td><td class="num">${sgn(r.heat)} °C</td><td class="num">${sgn(r.cost_pct,1)}%</td></tr>`).join("");
+})();
+
+/* ---------- trust ---------- */
+(function(){
+  const M = D.metrics, r2 = v => sgn(v,2);
+  $("trustlede").textContent = `An automated search scored ${M.iterations} ideas. Each idea was written down before its score was seen. This rule was the best one. It passed two of three checks, and the third check, on new data, did not confirm it.`;
+  $("tiles").innerHTML =
+    `<div class="tile"><div class="k">Development, 2009–2022</div><div class="v">${r2(M.dev.ratio)}</div><p>Score needed after ${M.n_trials} tries: ${M.needed_dev.toFixed(2)}. Range ${r2(M.dev.boot_lo)} to ${r2(M.dev.boot_hi)}.</p><span class="flag ok">Passed</span></div>` +
+    `<div class="tile"><div class="k">Shifted-data test</div><div class="v">${M.placebo.n_ge_real} of ${M.placebo.n}</div><p>Runs with the ocean and weather data shifted by whole years that matched the real score. The best one scored ${r2(M.placebo.max)}.</p><span class="flag ok">Passed</span></div>` +
+    `<div class="tile"><div class="k">New data, 2023–October 2026</div><div class="v">${r2(M.test.ratio)}</div><p>Bar set in advance: ${M.pass_bar.toFixed(2)}. Range ${r2(M.test.boot_lo)} to ${r2(M.test.boot_hi)}.</p><span class="flag ${M.passed ? "ok" : "alert"}">${M.passed ? "Confirmed" : "Not confirmed"}</span></div>`;
+  $("limits").innerHTML = [
+    "The rule makes about one call a year: nine calls in the 14 development years. That is too few to prove skill.",
+    "Other reasonable settings of the same idea score between +0.50 and +0.79 in development.",
+    "Before 2009 the rule had no skill: 51% of its calls were right.",
+    "Fitted models scored lower than this rule in the same test: logistic regression +0.31, random forest −0.02, LightGBM −0.33.",
+    "The score covers the futures price only. It has no differentials, storage, interest or lot sizes."
+  ].map(t => `<li>${t}</li>`).join("");
+})();
+
+/* ---------- volatility gauge (reading and test of 12 Nov 2026, not calculated again) ---------- */
+(function(){
+  const g = D.gauge, T = D.track, p = g.up["63"];
+  $("gbig").textContent = pct(p);
+  const names = {"21":"Next month","63":"Next 3 months","126":"Next 6 months"};
+  $("horizons").innerHTML = Object.entries(g.up).map(([h,v]) => `<div class="hz"><b>${pct(v)}</b><span>${names[h]}</span></div>`).join("");
+  $("gpct").textContent = `The reading of ${fmtDate(g.asof)} is higher than ${pct(g.percentile)} of trading days since 2012. The chance of a 10% fall in the same three months is ${pct(g.down63)}: the market is rough in both directions.`;
+  const sv = $("spark"), h = g.history, W = 520, H = 130, n = h.length, vs = h.map(r => r[1]), lo = Math.min(...vs,p)-.03, hi = Math.max(...vs,p)+.03, x = i => i/(n-1)*W, y = v => H-18-(v-lo)/(hi-lo)*(H-26);
+  S("path",{d:`M0 ${H} `+h.map((r,i) => `L${x(i).toFixed(1)} ${y(r[1]).toFixed(1)}`).join(" ")+` L${W} ${H} Z`,class:"area"},sv);
+  S("path",{d:"M"+h.map((r,i) => `${x(i).toFixed(1)} ${y(r[1]).toFixed(1)}`).join(" L"),class:"ln"},sv);
+  S("line",{x1:0,x2:W,y1:y(p),y2:y(p),class:"today","stroke-dasharray":"6 5"},sv);
+  [2012,2016,2020,2024].forEach(yr => { const i = h.findIndex(r => r[0].startsWith(yr)); if (i >= 0) S("text",{x:x(i)+4,y:H-2},sv).textContent = yr; });
+  S("text",{x:W-4,y:y(p)-6,"text-anchor":"end"},sv).textContent = "now "+pct(p);
+  const note = () => { $("gnote").textContent = `With your numbers above, a 10% move on 1.5 months of need is ${$("gnote").dataset.move}. ` +
+    `Test on ${T.n.toLocaleString("en-GB")} trading days, 2012–2026: error score ${T.brier[0][1].toFixed(3)} against ${T.brier[1][1].toFixed(3)} for the historical average (lower is better). ` +
+    `Exploratory. The gauge was calculated on ${fmtDate(g.asof)}, before the repair of the price series, and was not calculated again.`; };
+  document.addEventListener("plan", note); note();
+  $("sources").textContent = `Sources: ${D.sources.price}, weekly closes to ${fmtDate(D.weekly_close.at(-1)[0])}; ${D.sources.enso.replace("Nino", "Niño")}; ${D.sources.weather}, to ${fmtDate(D.weather_end)}. Coffee C is a futures benchmark, not a delivered invoice price.`;
+  $("method").textContent = `The call is calculated in this page from the two inputs (rule ${D.rule.id} of the autoresearch loop). A test compares it with the research code on each of the ${D.parity_sessions.toLocaleString("en-GB")} sessions from 2009 to ${fmtDate(D.price_archive_end)}. Page built on ${fmtDate(D.built)}.`;
+})();
+</script>
+</body>
+</html>
