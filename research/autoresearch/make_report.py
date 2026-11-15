@@ -154,7 +154,7 @@ for v in (-0.25, 0.25, 0.5, 0.75):
     pass
 for v in (-0.25, 0.25, 0.5, 0.75):
     ax.axhline(v, color=GRID, lw=0.6, zorder=1)
-ax.plot(np.r_[0, x], np.r_[core.SE0 * core.emax(10), need], color=ORANGE, lw=2, solid_capstyle="round", zorder=3,
+need_line, = ax.plot(np.r_[0, x], np.r_[core.SE0 * core.emax(10), need], color=ORANGE, lw=2, solid_capstyle="round", zorder=3,
         label="RATIO necessary for SCORE > 0 (rises with each trial)")
 ax.step(np.r_[0, x], np.r_[max(base.values()), best_line], where="post", color=BLUE, lw=2, zorder=4,
         label="Best RATIO to date (plan's step rule)")
@@ -171,7 +171,7 @@ for t in tab:
         txt, (dx, dy) = note[t["iteration"]]
         ax.annotate(txt, (t["iteration"], t["ratio"]), xytext=(t["iteration"] + dx, t["ratio"] + dy), fontsize=8.5, color=INK2,
                     arrowprops=dict(arrowstyle="-", color=MUTE, lw=0.7) if abs(dx) > 1.2 else None, va="center")
-ax.text(101.2, need[-1] - 0.035, f"{need[-1]:.3f} necessary", color=INK2, fontsize=9, va="center")
+need_text = ax.text(101.2, need[-1] - 0.035, f"{need[-1]:.3f} necessary", color=INK2, fontsize=9, va="center")
 ax.text(101.2, best_line[-1] + 0.03, f"{best_line[-1]:.3f} best", color=INK2, fontsize=9, va="center")
 ax.set_xlim(-2, 114); ax.set_ylim(-0.45, 0.95)
 ax.set_xticks([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]); ax.set_xticklabels(["base", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"])
@@ -185,7 +185,10 @@ ax.set_title("Development years 2009-2022. Best rule (iteration 86): +0.787 agai
 leg = ax.legend(loc="lower left", fontsize=8.5, frameon=False, ncol=2, labelcolor=INK2, bbox_to_anchor=(0.0, -0.33))
 fig.subplots_adjust(left=0.065, right=0.985, top=0.84, bottom=0.25)
 fig.savefig(out / "hillclimb.png", facecolor=SURF)
-# slide version: no title (the slide gives it), white surface, smaller canvas so that text is larger on a slide
+# slide version: no title (the slide gives it), white surface, smaller canvas so that text is larger on a slide.
+# The line "RATIO necessary" is not on the slide version (Celine, 15 Nov). The report graph above keeps it (plan 10b).
+need_line.remove(); need_text.remove(); leg.remove()
+leg = ax.legend(loc="lower left", fontsize=8.5, frameon=False, ncol=2, labelcolor=INK2)
 fig.suptitle(""); ax.set_title("", loc="left"); ax.set_xlim(-2, 118)
 fig.patch.set_facecolor("white"); ax.set_facecolor("white")
 fig.set_size_inches(9.0, 4.3)
