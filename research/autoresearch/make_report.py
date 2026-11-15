@@ -185,4 +185,11 @@ ax.set_title("Development years 2009-2022. Best rule (iteration 86): +0.787 agai
 leg = ax.legend(loc="lower left", fontsize=8.5, frameon=False, ncol=2, labelcolor=INK2, bbox_to_anchor=(0.0, -0.33))
 fig.subplots_adjust(left=0.065, right=0.985, top=0.84, bottom=0.25)
 fig.savefig(out / "hillclimb.png", facecolor=SURF)
+# slide version: no title (the slide gives it), white surface, smaller canvas so that text is larger on a slide
+fig.suptitle(""); ax.set_title("", loc="left"); ax.set_xlim(-2, 118)
+fig.patch.set_facecolor("white"); ax.set_facecolor("white")
+fig.set_size_inches(9.0, 4.3)
+leg.set_bbox_to_anchor((0.0, -0.40))
+fig.subplots_adjust(left=0.075, right=0.985, top=0.95, bottom=0.29)
+fig.savefig(out / "hillclimb_slide.png", facecolor="white")
 print("graph saved")
