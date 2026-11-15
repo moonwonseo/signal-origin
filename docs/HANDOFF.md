@@ -137,6 +137,7 @@ contract gap in the session after a marked day can make or remove a touch. The e
 | `research/exploratory/direction_study/` | Direction study and ENSO + CFTC test: plans, code, aggregate results, errata |
 | `research/exploratory/xgb_multi_origin/` | XGBoost on 37-node weather: plan, code, aggregate results, erratum |
 | `research/exploratory/{weather_volatility,cftc_positioning,multi_origin_pca}/` | Studies of 12-14 Nov |
+| `research/prototype/` | Buyer dashboard of 15 Nov: weekly call from rule c86, order planner, history, limits. Source and tests are here; the data and the built page are local. Start with its `README.md` |
 | `signal_origin/`, `configs/`, `data_tools/` | V4 package (Moonwon) and V5 modules (Celine); not changed on 15 Nov |
 | `docs/HANDOFF_2026-11-14.md` | Full record to 14 Nov |
 
@@ -157,6 +158,9 @@ edited. Package tests are not affected: no file of `signal_origin/` changed on 1
 
 ## 10. Open decisions and next steps
 1. Deck: present a negative result with one lead and one data defect (Celine's draft deck has this story).
+   Product demo: the dashboard of `research/prototype/` (built page on Celine's machine). It shows the call of
+   rule c86 with the label "not confirmed". The volatility gauge on it was not calculated again after the repair
+   of the price series.
 2. Moonwon: check if the roll gaps change V4 or V5 labels; decide on the publication allowlist.
 3. If the work continues: test the ENSO winter rule on years before 2000. This needs older coffee prices and a
    new plan written before the data are seen. It is the only test that can add evidence, because the rule

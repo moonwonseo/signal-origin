@@ -89,7 +89,7 @@ Primary cell: +10% within 63 sessions. Final presentation: 10 minutes, PDF, due 
 | `data_tools/` | Local data acquisition and checks (POWER pull, latency logger, price/label checks, liquidity mask) |
 | `research/autoresearch/` | Autoresearch loop "when to buy coffee" (15 Nov): plan, addenda, results, eval and harness, 100 candidates, data cards, trial log, journal |
 | `research/exploratory/` | Weather→volatility, CFTC positioning, multi-origin PCA, XGBoost multi-origin, Direction and ENSO + CFTC studies: PLAN, code, aggregate results |
-| `research/prototype/` | Buyer dashboard template and data fetcher (built HTML embeds prices, so it stays local) |
+| `research/prototype/` | Buyer dashboard (15 Nov): rule c86 as a JavaScript engine, page template, build script, tests. Its `data/` and the built HTML have third-party rows, so they stay local. Also the template of 14 Nov and its data fetcher |
 | `docs/` | `HANDOFF.md` (15 Nov), `HANDOFF_2026-11-14.md`, `V5_CHANGES.md`, `V5_DATA_NOTES.md`, `V5_LOCAL_PREVIEW_2026-11-12.md`, plus V4 docs |
 
 ## Environment
