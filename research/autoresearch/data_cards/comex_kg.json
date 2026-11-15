@@ -1,0 +1,7 @@
+{"name": "comex_kg", "kind": "monthly", "file": "autoresearch/data/comex_coffee_monthly.csv", "column": "kg",
+ "delay_months": 1, "start": "1997-01-01", "alt": true,
+ "publisher": "Brazil, Ministry of Development, Industry, Trade and Services (MDIC), Comex Stat: monthly exports of NCM 09011110 (green coffee, not decaffeinated)",
+ "url": "https://api-comexstat.mdic.gov.br/general", "first_date": "see file",
+ "publication_delay": "Month M is published in the first week of M+1. Used from the 15th of M+1.",
+ "revision_policy": "Monthly trade statistics can be revised in later months; the file holds the last values. Arabica and robusta are in one code.",
+ "new_source_number": 19}

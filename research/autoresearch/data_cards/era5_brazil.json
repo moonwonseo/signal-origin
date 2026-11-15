@@ -1,0 +1,7 @@
+{"name": "era5_brazil", "kind": "weather_daily", "file": "autoresearch/data/era5_brazil.csv", "alt": true,
+ "publisher": "ECMWF / Copernicus ERA5 reanalysis, served by the Open-Meteo archive API (Open-Meteo is named in the project's CLAUDE.md as a project source)",
+ "url": "https://archive-api.open-meteo.com/v1/archive", "first_date": "1981-01-01 (requested range)",
+ "variables": "daily maximum and mean temperature, precipitation, FAO reference evapotranspiration (ET0), 6 Brazil nodes",
+ "publication_delay": "ERA5 preliminary values appear about 5 days after the day. Used at t-7 calendar days (the eval cuts at t-4; the candidate adds 3 days).",
+ "revision_policy": "Preliminary values are replaced by final values after about 2 months. The file holds final values.",
+ "new_source_number": 18}

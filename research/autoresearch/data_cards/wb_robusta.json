@@ -1,0 +1,7 @@
+{"name": "wb_robusta", "kind": "monthly", "file": "autoresearch/data/wb_coffee_monthly.csv", "column": "robusta",
+ "delay_months": 1, "start": "1990-01-01", "alt": false,
+ "publisher": "World Bank Commodity Price Data (Pink Sheet), monthly", "first_date": "1960-01",
+ "url": "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx",
+ "publication_delay": "Month M is published in the first days of M+1. Used from the 15th of M+1.",
+ "revision_policy": "Monthly average prices; small revisions are possible. Market data, not alt data.",
+ "new_source_number": 3}

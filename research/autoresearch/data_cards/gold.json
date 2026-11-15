@@ -1,0 +1,11 @@
+{
+ "name": "gold",
+ "kind": "market_daily",
+ "file": "autoresearch/data/gold.csv",
+ "alt": false,
+ "publisher": "Yahoo Finance chart API, symbol GC=F (COMEX gold futures, front-month chain)",
+ "url": "https://query1.finance.yahoo.com/v8/finance/chart/GC=F",
+ "publication_delay": "Daily close. Used through t-1 only (strictly before the Coffee C session).",
+ "revision_policy": "Vendor series, not verified. Futures chains are unadjusted and contain contract gaps.",
+ "new_source_number": 11
+}

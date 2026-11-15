@@ -1,0 +1,11 @@
+{
+ "name": "vix",
+ "kind": "market_daily",
+ "file": "autoresearch/data/vix.csv",
+ "alt": false,
+ "publisher": "Yahoo Finance chart API, symbol ^VIX (CBOE volatility index)",
+ "url": "https://query1.finance.yahoo.com/v8/finance/chart/^VIX",
+ "publication_delay": "Daily close. Used through t-1 only (strictly before the Coffee C session).",
+ "revision_policy": "Vendor series, not verified. Futures chains are unadjusted and contain contract gaps.",
+ "new_source_number": 15
+}
