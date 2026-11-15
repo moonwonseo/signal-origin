@@ -28,6 +28,7 @@ test, and failed the test period. Read `Autoresearch_RESULTS.md` first.
 | `fetch_*.py` | Download scripts for the new sources (public files, no account) |
 | `selftest.py` | Checks of the harness (leak test, perfect-foresight score, random strategies) |
 | `make_report.py` | Builds the iteration table and the hill-climb graph from the trial log |
+| `make_figures.py` | Builds the slide figures in `results/figures/` (label, walk-forward, idea families, yearly result of the final rule, ranges, roll gap). Aggregates and made-up illustrations only |
 | `run.sh`, `it.sh`, `newc.sh` | Shell helpers: run on the compute machine, run one counted iteration, make a candidate file |
 
 ## Commands (from the `autoresearch` folder on the compute machine)
