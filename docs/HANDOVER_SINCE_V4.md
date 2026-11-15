@@ -543,8 +543,7 @@ Facts about the deck:
   for these sections (`docs/HANDOFF_2026-11-14.md`, section 1). Celine builds the remaining parts.
 - Slide 13: the line "RATIO necessary" was removed at Celine's instruction. The necessary score (0.71) is in words on
   slides 2, 7, 9, 18 and 20, and as a line on slide 14.
-- Slide 3 still describes the dashboard as "risk gauge and coffee-belt early warning". That was v0. The current
-  dashboard is described in section 11.2.
+- Slide 3 names the current dashboard: weekly buy call from the final rule, order planner, risk gauge (corrected on 15 Nov).
 - Chart images come from `research/autoresearch/results/` on `main`. Two illustrations (label, contract gap) use
   made-up prices and say so.
 
